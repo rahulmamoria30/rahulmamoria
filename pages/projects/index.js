@@ -1,12 +1,19 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faProjectDiagram } from '@fortawesome/free-solid-svg-icons'; // Example icon from FontAwesome
 import ProjectCard from "./project-card";
 
 export default function ProjectsPage() {
   return (
-    <main className=" font-boska" >
-      <h1 className="text-gray-100 text-4xl md:text-5xl lg:text-6xl py-8 md:py-12 lg:py-16">Projects</h1> 
-      <ProjectCard />
+    <main className="font-boska px-4 sm:px-6 md:px-8 lg:px-16 xl:px-20">
+      {/* Heading section */}
+      <div className="flex items-center space-x-4">
+      
+        <h1 className="text-gray-100 text-3xl sm:text-4xl md:text-5xl lg:text-6xl py-4 sm:py-6 md:py-8 lg:py-12">
+          Projects
+        </h1>
+      </div>
+
+      <section className="mt-6 sm:mt-8 md:mt-12 lg:mt-16">
+        <ProjectCard />
+      </section>
     </main>
   );
 }

@@ -1,43 +1,61 @@
-import React, { useState } from 'react';
-import Carousel from 'react-material-ui-carousel';
-import { Button } from '@mui/material';
+import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const CertificatePage = () => {
   // Sample images for the carousel
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isLargeScreen, setIsLargeScreen] = useState(false);
+
   const images = [
     '/images/gcp_certificate.jpg',
     '/images/React_certificate.jpg',
     '/images/Javascript_certificate.jpg',
-    '/images/React_certificate.jpg',
-    '/images/Javascript_certificate.jpg',
-    '/images/Javascript_certificate.jpg',
+    '/images/Typescript_certificate.jpg',
+    '/images/Angular_certificate.jpg',
+    '/images/Unit_testing.jpg',
   ];
 
+  // Update the isLargeScreen state based on screen width
+  useEffect(() => {
+    const handleResize = () => {
+      setIsLargeScreen(window.innerWidth >= 1024); // lg breakpoint in Tailwind is 1024px
+    };
+
+    // Call once on mount
+    handleResize();
+
+    // Add event listener for window resize
+    window.addEventListener('resize', handleResize);
+
+    // Clean up the event listener on unmount
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   const nextSlide = () => {
     setCurrentIndex((prevIndex) => 
-      prevIndex === images.length - 1 ? 0 : prevIndex + 1
+      prevIndex === images.length - (isLargeScreen ? 2 : 1) ? 0 : prevIndex + (isLargeScreen ? 2 : 1)
     );
   };
 
   const prevSlide = () => {
     setCurrentIndex((prevIndex) => 
-      prevIndex === 0 ? images.length - 1 : prevIndex - 1
+      prevIndex === 0 ? images.length - (isLargeScreen ? 2 : 1) : prevIndex - (isLargeScreen ? 2 : 1)
     );
   };
+
   return (
-    <div className="font-boska">
-      <h1 className="text-4xl text-gray-300 md:text-5xl lg:text-6xl py-8 md:py-12 lg:py-16">
+    <div className="font-boska px-4 sm:px-6 md:px-8 lg:px-16 xl:px-20">
+      <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-gray-300 py-6 md:py-12 lg:py-16">
         Certifications
       </h1>
 
-      <div className="relative max-w-2xl mx-auto px-20">
+      <div className="relative mx-auto px-4 sm:px-8 md:px-12 lg:px-20 max-w-full md:max-w-3xl lg:max-w-4xl">
         {/* Left Arrow */}
         <button 
           onClick={prevSlide}
-          className="absolute left-0 top-1/2 -translate-y-1/2 p-2 rounded-full border hover:border-gray-100 text-gray-300 border-gray-300 hover:text-gray-100 transition-colors"
+          className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 p-2 rounded-full border hover:border-gray-100 text-gray-300 border-gray-300 hover:text-gray-100 transition-colors"
         >
           <ChevronLeft className="w-6 h-6" />
         </button>
@@ -45,18 +63,34 @@ const CertificatePage = () => {
         {/* Carousel Content */}
         <div className="overflow-hidden">
           <div className="flex justify-center items-center">
-            <img
-              src={images[currentIndex]}
-              alt={`Certificate ${currentIndex + 1}`}
-              className="w-full h-auto rounded-lg shadow-lg"
-            />
+            {/* Display 1 image on small screens, 2 images on larger screens */}
+            {isLargeScreen ? (
+              <div className="flex gap-4">
+                <img
+                  src={images[currentIndex]}
+                  alt={`Certificate ${currentIndex + 1}`}
+                  className="w-1/2 h-auto rounded-lg shadow-lg"
+                />
+                <img
+                  src={images[(currentIndex + 1) % images.length]} // Show next image
+                  alt={`Certificate ${currentIndex + 2}`}
+                  className="w-1/2 h-auto rounded-lg shadow-lg"
+                />
+              </div>
+            ) : (
+              <img
+                src={images[currentIndex]}
+                alt={`Certificate ${currentIndex + 1}`}
+                className="w-1/2 h-auto rounded-lg shadow-lg"
+              />
+            )}
           </div>
         </div>
 
         {/* Right Arrow */}
         <button 
           onClick={nextSlide}
-          className="absolute right-0 top-1/2 -translate-y-1/2 p-2 rounded-full border hover:border-gray-100 text-gray-300 border-gray-300 hover:text-gray-100 transition-colors"
+          className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 p-2 rounded-full border hover:border-gray-100 text-gray-300 border-gray-300 hover:text-gray-100 transition-colors"
         >
           <ChevronRight className="w-6 h-6" />
         </button>
@@ -66,14 +100,3 @@ const CertificatePage = () => {
 };
 
 export default CertificatePage;
-
-
-
-const images = [
-  '/images/gcp_certificate.jpg',
-  '/images/React_certificate.jpg',
-  '/images/Javascript_certificate.jpg',
-  '/images/React_certificate.jpg',
-  '/images/Javascript_certificate.jpg',
-  '/images/Javascript_certificate.jpg',
-];

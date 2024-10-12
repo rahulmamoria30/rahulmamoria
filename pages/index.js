@@ -6,7 +6,6 @@ import ProjectsPage from "./projects";
 import CertificatePage from "./certificates";
 import ContactPage from "./contact-me";
 
-
 export default function Home() {
   return (
     <>
@@ -18,27 +17,27 @@ export default function Home() {
         <section id="about" className="pb-16">
           <AboutPage />
         </section>
-        <hr /> 
+        <hr />
         <section id="skills" className="pb-16">
           <MySkills />
         </section>
-        <hr /> 
+        <hr />
         <section id="experience" className="pb-16">
           <Experience />
         </section>
-        <hr /> 
+        <hr />
         <section id="projects" className="pb-16">
           <ProjectsPage />
         </section>
-        <hr /> 
+        <hr />
         <section id="certificates" className="pb-16">
           <CertificatePage />
         </section>
-        <hr /> 
+        <hr />
         <section id="contact">
           <ContactPage />
         </section>
-        <hr /> 
+        <hr />
       </main>
     </>
   );
