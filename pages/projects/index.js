@@ -2,7 +2,7 @@ import ProjectCard from "./project-card";
 
 export default function ProjectsPage() {
   return (
-    <main className="font-boska px-5 sm:px-6 md:px-8 lg:px-16 xl:px-20">
+    <main className="font-boska px-5  md:px-8">
       {/* Heading section */}
       <div className="flex items-center space-x-4">
       
