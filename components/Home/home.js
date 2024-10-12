@@ -7,10 +7,10 @@ export default function HomePage() {
       <div className="flex flex-col items-center justify-center flex-grow">
         {" "}
         {/* Center the content and allow it to grow */}
-        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl text-gray-100 capitalize font-bold text-center">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl  capitalize font-bold text-center">
           Rahul Mamoria
         </h1>
-        <p className="mt-2 text-lg sm:text-xl md:text-2xl text-gray-100 max-w-xl text-center">
+        <p className="mt-2 text-lg sm:text-xl md:text-2xl  max-w-xl text-center">
           {" "}
           {/* Responsive text size */}
           Aspiring software engineer committed to creativity and growth.
@@ -66,7 +66,7 @@ export default function HomePage() {
           fill="currentColor"
           strokeWidth="0"
           viewBox="0 0 512 512"
-          className="animate-bounce w-5 h-5 sm:w-6 sm:h-6 text-gray-300 -my-1"
+          className="animate-bounce w-5 h-5 sm:w-6 sm:h-6  -my-1"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"></path>
@@ -76,7 +76,7 @@ export default function HomePage() {
           fill="currentColor"
           strokeWidth="0"
           viewBox="0 0 512 512"
-          className="animate-bounce w-5 h-5 sm:w-6 sm:h-6 text-gray-300 -my-1"
+          className="animate-bounce w-5 h-5 sm:w-6 sm:h-6 -my-1"
           style={{ animationDelay: "0.2s" }} // Delay for second arrow
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -87,7 +87,7 @@ export default function HomePage() {
           fill="currentColor"
           strokeWidth="0"
           viewBox="0 0 512 512"
-          className="animate-bounce w-5 h-5 sm:w-6 sm:h-6 text-gray-300 -my-1"
+          className="animate-bounce w-5 h-5 sm:w-6 sm:h-6  -my-1"
           style={{ animationDelay: "0.4s" }} // Delay for third arrow
           xmlns="http://www.w3.org/2000/svg"
         >

@@ -84,7 +84,7 @@ const ContactPage = () => {
   };
 
   return (
-    <section className="py-16 px-5 text-gray-300 font-boska ">
+    <section className="py-16 px-5 font-boska ">
       <h1 className="text-4xl md:text-5xl lg:text-6xl py-8 md:py-12 lg:py-16">
         Let's connect
       </h1>
@@ -106,14 +106,14 @@ const ContactPage = () => {
             <li className="flex items-center">
               <FontAwesomeIcon
                 icon={faEnvelope}
-                className="mr-2 text-gray-300"
+                className="mr-2"
               />
               <span className="text-xl italic">Email: &nbsp;rahulmamoria@gmail.com </span>
             </li>
             <li className="flex items-center">
               <FontAwesomeIcon
                 icon={faPhoneAlt}
-                className="mr-2 text-gray-300"
+                className="mr-2"
               />
               <span className="text-xl italic">Phone: &nbsp;+91 7690898460 </span>
             </li>

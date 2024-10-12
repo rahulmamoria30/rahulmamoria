@@ -2,14 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
-/* @import url('https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap'); */
-
-
+/* Global CSS */
 body {
   margin: 0;
   padding: 0;
-  background: #34373b;
-  padding: 0px 100px; 
+}
+
+.light {
+  background: #ffedd5; /* Light mode background */
+  color: #1e293b; /* Light mode text color */
+  padding: 0 100px; /* Adjust padding for light mode */
+}
+
+.dark {
+  background: #34373b; /* Dark mode background */
+  color: #e5e7eb; /* Dark mode text color */
+  padding: 0 100px; /* Adjust padding for dark mode */
 }
 
 @media (max-width: 768px) {
@@ -17,5 +25,3 @@ body {
     padding: 0; /* Remove padding for mobile devices */
   }
 }
-
-

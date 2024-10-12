@@ -13,27 +13,27 @@ export default function Skills() {
             style={{ animationDelay: `${index * 0.1}s` }}
           >
             <div className="flex items-center mb-2">
-              <span className="text-gray-100 mr-3">{skill.icon}</span>
+              <span className=" mr-3">{skill.icon}</span>
               <h3 className="text-lg font-semibold">
-                <span className="text-gray-200 hover:text-gray-100 transition-colors">
+                <span className=" hover:text-gray-100 transition-colors">
                   {skill.name}
                 </span>
               </h3>
             </div>
-            <p className="text-gray-300">{skill.description}</p>
+            <p className="">{skill.description}</p>
           </div>
         ))}
       </section>
 
       {/* Coding Profiles Section */}
       <div className="mt-12">
-        <h2 className="text-2xl text-gray-100 mb-6">Coding Profiles</h2>
+        <h2 className="text-2xl  mb-6">Coding Profiles</h2>
         <div className="flex flex-wrap gap-6 items-center">
           <Link
             href="https://leetcode.com/u/rahul_rm__/"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center border border-gray-200 text-gray-300 px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors"
+            className="flex items-center border border-gray-600  px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors"
           >
             <Image
               src="/images/leetcode.svg"
@@ -49,7 +49,7 @@ export default function Skills() {
             href="https://www.geeksforgeeks.org/user/rahulmamoria/"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center border border-gray-200 text-gray-300 px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors"
+            className="flex items-center border border-gray-600  px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors"
           >
             <Image
               src="https://upload.wikimedia.org/wikipedia/commons/4/43/GeeksforGeeks.svg"
@@ -65,7 +65,7 @@ export default function Skills() {
             href="https://www.codechef.com/users/rahulrm_903"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center border border-gray-200 text-gray-300 px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors"
+            className="flex items-center border border-gray-600  px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors"
           >
             <Image
               src="/images/codechef.png"
@@ -81,7 +81,7 @@ export default function Skills() {
             href="https://codeforces.com/profile/rahul_rm__"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center border border-gray-200 text-gray-300 px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors"
+            className="flex items-center border border-gray-600  px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors"
           >
             <Image
               src="https://art.npanuhin.me/SVG/Codeforces/Codeforces.colored.svg"

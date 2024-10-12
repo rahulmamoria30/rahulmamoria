@@ -62,7 +62,7 @@ const CertificatePage = () => {
 
   return (
     <div className="font-boska px-5 sm:px-6 md:px-8 ">
-      <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-gray-300 py-6 md:py-12 lg:py-16">
+      <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl  py-6 md:py-12 lg:py-16">
         Certifications
       </h1>
 
@@ -70,7 +70,7 @@ const CertificatePage = () => {
         {/* Left Arrow */}
         <button 
           onClick={prevSlide}
-          className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 p-2 rounded-full border hover:border-gray-100 text-gray-300 border-gray-300 hover:text-gray-100 transition-colors"
+          className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 p-2 rounded-full border hover:border-gray-100  border-gray-300 hover:text-gray-100 transition-colors"
         >
           <ChevronLeft className="w-6 h-6" />
         </button>
@@ -105,7 +105,7 @@ const CertificatePage = () => {
         {/* Right Arrow */}
         <button 
           onClick={nextSlide}
-          className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 p-2 rounded-full border hover:border-gray-100 text-gray-300 border-gray-300 hover:text-gray-100 transition-colors"
+          className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 p-2 rounded-full border hover:border-gray-100  border-gray-300 hover:text-gray-100 transition-colors"
         >
           <ChevronRight className="w-6 h-6" />
         </button>

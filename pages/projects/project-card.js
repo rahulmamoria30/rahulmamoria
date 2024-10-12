@@ -46,7 +46,7 @@ const ProjectDialog = ({ project, onClose }) => {
         </Typography>
         <div className="flex flex-wrap gap-2 mb-4">
           {project.techstack.map((tech, idx) => (
-            <span key={idx} className="text-gray-300 bg-gray-700 px-2 py-1 rounded">
+            <span key={idx} className=" bg-gray-700 px-2 py-1 rounded">
               {tech}
             </span>
           ))}
@@ -102,7 +102,7 @@ function ProjectCard() {
             alt={project.project_name}
             className="object-cover h-48 w-full"
           />
-          <CardContent className="flex flex-col justify-between text-gray-300 font-boska">
+          <CardContent className="flex flex-col justify-between  font-boska">
             <Typography variant="h6" className="mb-2">
               {project.project_name}
             </Typography>
@@ -110,7 +110,7 @@ function ProjectCard() {
             {/* Display project tech stack */}
             <div className="flex flex-wrap gap-2 mb-2 text-sm">
               {project.techstack.map((tech, idx) => (
-                <span key={idx} className="text-gray-300 bg-gray-700 px-2 py-1 rounded">
+                <span key={idx} className=" bg-gray-700 px-2 py-1 rounded">
                   {tech}
                 </span>
               ))}
@@ -119,12 +119,12 @@ function ProjectCard() {
             <div className="border border-b-0 my-3"></div>
             <div className="flex justify-between items-center">
               <IconButton
-                className="text-gray-100"
+                className=""
                 onClick={() => window.open(project.github_link, "_blank")}
               >
-                <GitHubIcon className="text-gray-300" />
+                <GitHubIcon/>
               </IconButton>
-              <Button className="text-gray-300" onClick={() => handleCheckProjectClick(project)}>
+              <Button  onClick={() => handleCheckProjectClick(project)}>
                 Description
               </Button>
             </div>
