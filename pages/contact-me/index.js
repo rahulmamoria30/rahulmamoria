@@ -84,7 +84,7 @@ const ContactPage = () => {
   };
 
   return (
-    <section className="py-16 px-4 text-gray-300 font-boska ">
+    <section className="py-16 px-5 text-gray-300 font-boska ">
       <h1 className="text-4xl md:text-5xl lg:text-6xl py-8 md:py-12 lg:py-16">
         Let's connect
       </h1>

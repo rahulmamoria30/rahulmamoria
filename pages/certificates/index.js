@@ -13,6 +13,7 @@ const CertificatePage = () => {
     '/images/Typescript_certificate.jpg',
     '/images/Angular_certificate.jpg',
     '/images/Unit_testing.jpg',
+    '/images/CSS_certificate.jpg',
   ];
 
   // Update the isLargeScreen state based on screen width
@@ -34,19 +35,33 @@ const CertificatePage = () => {
   }, []);
 
   const nextSlide = () => {
-    setCurrentIndex((prevIndex) => 
-      prevIndex === images.length - (isLargeScreen ? 2 : 1) ? 0 : prevIndex + (isLargeScreen ? 2 : 1)
-    );
+    setCurrentIndex((prevIndex) => {
+      if (isLargeScreen) {
+        // For large screens, show 2 images, so account for the possibility of having an odd number of images.
+        return prevIndex === images.length - 2 || prevIndex === images.length - 1
+          ? 0
+          : prevIndex + 2;
+      } else {
+        // For small screens, move 1 step at a time
+        return prevIndex === images.length - 1 ? 0 : prevIndex + 1;
+      }
+    });
   };
 
   const prevSlide = () => {
-    setCurrentIndex((prevIndex) => 
-      prevIndex === 0 ? images.length - (isLargeScreen ? 2 : 1) : prevIndex - (isLargeScreen ? 2 : 1)
-    );
+    setCurrentIndex((prevIndex) => {
+      if (isLargeScreen) {
+        // For large screens, show 2 images, so account for the possibility of having an odd number of images.
+        return prevIndex === 0 ? images.length - (images.length % 2 === 0 ? 2 : 1) : prevIndex - 2;
+      } else {
+        // For small screens, move 1 step at a time
+        return prevIndex === 0 ? images.length - 1 : prevIndex - 1;
+      }
+    });
   };
 
   return (
-    <div className="font-boska px-4 sm:px-6 md:px-8 lg:px-16 xl:px-20">
+    <div className="font-boska px-5 sm:px-6 md:px-8 lg:px-16 xl:px-20">
       <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-gray-300 py-6 md:py-12 lg:py-16">
         Certifications
       </h1>
@@ -63,7 +78,7 @@ const CertificatePage = () => {
         {/* Carousel Content */}
         <div className="overflow-hidden">
           <div className="flex justify-center items-center">
-            {/* Display 1 image on small screens, 2 images on larger screens */}
+    
             {isLargeScreen ? (
               <div className="flex gap-4">
                 <img
@@ -72,7 +87,7 @@ const CertificatePage = () => {
                   className="w-1/2 h-auto rounded-lg shadow-lg"
                 />
                 <img
-                  src={images[(currentIndex + 1) % images.length]} // Show next image
+                  src={images[(currentIndex + 1) % images.length]} 
                   alt={`Certificate ${currentIndex + 2}`}
                   className="w-1/2 h-auto rounded-lg shadow-lg"
                 />

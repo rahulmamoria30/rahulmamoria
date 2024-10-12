@@ -15,12 +15,12 @@ export default function Skills() {
             <div className="flex items-center mb-2">
               <span className="text-gray-100 mr-3">{skill.icon}</span>
               <h3 className="text-lg font-semibold">
-                <span className="text-gray-300 hover:text-gray-100 transition-colors">
+                <span className="text-gray-200 hover:text-gray-100 transition-colors">
                   {skill.name}
                 </span>
               </h3>
             </div>
-            <p className="text-gray-400">{skill.description}</p>
+            <p className="text-gray-300">{skill.description}</p>
           </div>
         ))}
       </section>

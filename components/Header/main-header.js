@@ -53,7 +53,7 @@ export default function MainHeader() {
           {navItems.map((item, index) => (
             <li key={index} className="cursor-pointer">
               <ScrollLink
-                className={`text-lg text-gray-100 font-light relative ${
+                className={`text-xl text-gray-100 font-light relative ${
                   router.pathname === `/${item.to}` ? "text-gray-300 underline" : ""
                 }`}
                 to={item.to}
@@ -90,7 +90,7 @@ export default function MainHeader() {
             {navItems.map((item, index) => (
               <li key={index}>
                 <ScrollLink
-                  className={`text-lg text-gray-300 font-light relative ${
+                  className={`text-xl text-gray-300 font-light relative ${
                     router.pathname === `/${item.to}` ? "underline" : ""
                   }`}
                   to={item.to}
