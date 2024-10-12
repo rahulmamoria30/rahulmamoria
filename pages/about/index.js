@@ -1,5 +1,5 @@
 import { Mail, MapPin } from 'lucide-react';
-import { LinkedIn, Instagram, Facebook, Twitter, GitHub } from '@mui/icons-material';
+import { LinkedIn, Instagram, GitHub } from '@mui/icons-material';
 
 export default function AboutPage() {
   return (
@@ -19,7 +19,7 @@ export default function AboutPage() {
         </div>
 
         {/* About Content */}
-        <div className="md:w-3/5 px-2 md:px-8 flex flex-col justify-between">
+        <div className="md:w-3/5 flex flex-col justify-between">
           <div>
             {/* Name and Role */}
             <h1 className="text-3xl md:text-4xl lg:text-5xl leading-8 font-bold tracking-tight text-gray-100">
@@ -52,7 +52,6 @@ export default function AboutPage() {
               <a href="https://www.instagram.com/rahul_rm__/" className="text-blue-500 hover:text-blue-600">
                 <Instagram className="h-6 w-6" />
               </a>
-              
               <a href="https://github.com/rahulmamoria30" className="text-blue-500 hover:text-blue-600">
                 <GitHub className="h-6 w-6" />
               </a>
