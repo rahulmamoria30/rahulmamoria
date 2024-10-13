@@ -5,23 +5,40 @@
 /* Global CSS */
 body {
   margin: 0;
-  padding: 0;
+  padding: 0 100px; /* Adjust padding for dark mode */
 }
 
 .light {
-  background: #ffedd5; /* Light mode background */
-  color: #1e293b; /* Light mode text color */
-  padding: 0 100px; /* Adjust padding for light mode */
+  background: #fff; 
+  color: #1e293b; 
 }
 
 .dark {
-  background: #34373b; /* Dark mode background */
-  color: #e5e7eb; /* Dark mode text color */
-  padding: 0 100px; /* Adjust padding for dark mode */
+  background: #34373b;
+  color: #e5e7eb; 
+ 
 }
+
+
+@keyframes flip {
+  0% {
+    transform: rotateY(0);
+  }
+  100% {
+    transform: rotateY(360deg);
+  }
+}
+
+.flip-animation {
+  animation: flip 1s ease-in-out forwards;
+}
+
+
 
 @media (max-width: 768px) {
   body {
     padding: 0; /* Remove padding for mobile devices */
   }
 }
+
+

@@ -4,16 +4,15 @@ const ThemeContext = createContext();
 
 export const themes = {
     light: {
-      background: '#ffedd5', // Example light background color
-      color: '#1e293b', // Example light text color
-      headerBackground: '#ffffff', // Example light header background
+     background: "bg-white",
+      text: "text-black",
     },
     dark: {
-      background: '#34373b', // Example dark background color
-      color: '#e5e7eb', // Example dark text color
-      headerBackground: '#1e1e1e', // Example dark header background
+      background: "bg-gray-900",
+      text: "text-gray-200",
     },
   };
+  
 export const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState(themes.light);
 
