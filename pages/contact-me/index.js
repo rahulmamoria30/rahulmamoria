@@ -11,9 +11,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faEnvelope,
   faPhoneAlt,
-  faCheckCircle
+  faCheckCircle,
+  faAddressBook
 } from "@fortawesome/free-solid-svg-icons";
-
+import { useTheme } from "@/ThemeContext";
 const ContactPage = () => {
   const nameRef = useRef(null);
   const emailRef = useRef(null);
@@ -23,7 +24,7 @@ const ContactPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [message, setMessage] = useState("");
   const [errors, setErrors] = useState({});
-
+  const {theme} = useTheme();
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -65,20 +66,20 @@ const ContactPage = () => {
   // Define common sx styles for TextField
   const textFieldStyles = {
     "& .MuiInputBase-root": {
-      color: "#D1D5DB" // text-gray-300 for input text
+      color: theme.text // text-gray-300 for input text
     },
     "& .MuiFormLabel-root": {
-      color: "#D1D5DB" // text-gray-300 for labels
+      color: theme.text // text-gray-300 for labels
     },
     "& .MuiOutlinedInput-root": {
       "& fieldset": {
-        borderColor: "#D1D5DB" // text-gray-300 for borders
+        borderColor:theme.text // text-gray-300 for borders
       },
       "&:hover fieldset": {
-        borderColor: "#A8A29E" // slightly darker on hover
+        borderColor: theme.text // slightly darker on hover
       },
       "&.Mui-focused fieldset": {
-        borderColor: "#F3F4F6" // change border color on focus
+        borderColor: theme.text // change border color on focus
       }
     }
   };
@@ -112,7 +113,7 @@ const ContactPage = () => {
             </li>
             <li className="flex items-center">
               <FontAwesomeIcon
-                icon={faPhoneAlt}
+                icon={faAddressBook}
                 className="mr-2"
               />
               <span className="text-xl italic">Phone: &nbsp;+91 7690898460 </span>

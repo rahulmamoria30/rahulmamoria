@@ -82,7 +82,7 @@ export default function MainHeader() {
         /> 
         */}
         {/* New logic with 'R' letter */}
-        <div className="text-5xl font-bold text-white">R</div>
+        <div className="text-5xl font-bold ">R</div>
       </div>
 
 
@@ -113,6 +113,7 @@ export default function MainHeader() {
           <IconButton
             onClick={(event) => setAnchorEl(event.currentTarget)}
             color="inherit"
+            
           >
             {theme === "dark" ? <LightModeIcon /> : <DarkModeIcon />}
           </IconButton>
@@ -121,8 +122,9 @@ export default function MainHeader() {
             open={Boolean(anchorEl)}
             onClose={() => setAnchorEl(null)}
             MenuListProps={{ onMouseLeave: () => setAnchorEl(null) }}
+           
           >
-            <MenuItem onClick={() => handleThemeChange("light")}>
+            <MenuItem onClick={() => handleThemeChange("light")} >
               <ListItemIcon>
                 <LightModeIcon />
               </ListItemIcon>

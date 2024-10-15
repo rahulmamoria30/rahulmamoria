@@ -11,7 +11,7 @@ import { GitHub, Instagram, LinkedIn, Mail } from "@mui/icons-material";
 
 const Footer = () => {
   return (
-    <footer className="py-4 text-gray-300 font-boska">
+    <footer className="py-4  font-boska">
       <div className="flex flex-col items-center flex-grow gap-4">
         <div className="flex items-center justify-center gap-5 text-4xl">
           <Link href="https://www.instagram.com/rahul_rm__/" target="_blank">
@@ -27,7 +27,7 @@ const Footer = () => {
           </Link>
         </div>
 
-        <p className="max-w-4xl text-2xl text-center px-4">
+        <p className="max-w-4xl text-xl text-center px-4">
           Design and Developed by Rahul Mamoria.
         </p>
       </div>

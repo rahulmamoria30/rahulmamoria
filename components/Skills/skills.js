@@ -15,7 +15,7 @@ export default function Skills() {
             <div className="flex items-center mb-2">
               <span className=" mr-3">{skill.icon}</span>
               <h3 className="text-lg font-semibold">
-                <span className=" hover:text-gray-100 transition-colors">
+                <span className=" transition-colors">
                   {skill.name}
                 </span>
               </h3>
@@ -33,7 +33,7 @@ export default function Skills() {
             href="https://leetcode.com/u/rahul_rm__/"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center border border-gray-600  px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors"
+            className="flex items-center border border-gray-600  px-4 py-2 rounded-lg  transition-colors"
           >
             <Image
               src="/images/leetcode.svg"
@@ -49,7 +49,7 @@ export default function Skills() {
             href="https://www.geeksforgeeks.org/user/rahulmamoria/"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center border border-gray-600  px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors"
+            className="flex items-center border border-gray-600  px-4 py-2 rounded-lg  transition-colors"
           >
             <Image
               src="https://upload.wikimedia.org/wikipedia/commons/4/43/GeeksforGeeks.svg"
@@ -65,7 +65,7 @@ export default function Skills() {
             href="https://www.codechef.com/users/rahulrm_903"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center border border-gray-600  px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors"
+            className="flex items-center border border-gray-600  px-4 py-2 rounded-lg  transition-colors"
           >
             <Image
               src="/images/codechef.png"
@@ -81,7 +81,7 @@ export default function Skills() {
             href="https://codeforces.com/profile/rahul_rm__"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center border border-gray-600  px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors"
+            className="flex items-center border border-gray-600  px-4 py-2 rounded-lg  transition-colors"
           >
             <Image
               src="https://art.npanuhin.me/SVG/Codeforces/Codeforces.colored.svg"
