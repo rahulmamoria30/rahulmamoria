@@ -2,7 +2,13 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import { Link as ScrollLink } from "react-scroll";
 import { useRouter } from "next/router";
-import { IconButton, Menu, MenuItem, ListItemIcon, ListItemText } from "@mui/material";
+import {
+  IconButton,
+  Menu,
+  MenuItem,
+  ListItemIcon,
+  ListItemText
+} from "@mui/material";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import SettingsBrightnessIcon from "@mui/icons-material/SettingsBrightness"; // Icon for system theme
@@ -57,7 +63,6 @@ export default function MainHeader() {
     }
     setAnchorEl(null);
   };
-
   return (
     <header
       className={`flex fixed w-full items-center justify-between ${
@@ -66,10 +71,8 @@ export default function MainHeader() {
           : theme.headerBackground
       } top-0 left-0 z-10 px-4 md:px-8 lg:px-24 py-4 transition-all duration-300 ease-in-out font-boska`}
     >
-    <div
-        className={`p-1 cursor-pointer ${
-          isScrolled ? "flip-animation" : ""
-        }`}
+      <div
+        className={`p-1 cursor-pointer ${isScrolled ? "flip-animation" : ""}`}
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
       >
         {/* Commented out image */}
@@ -85,35 +88,35 @@ export default function MainHeader() {
         <div className="text-5xl font-bold ">R</div>
       </div>
 
+      {/* Flex container for nav and mode icon aligned to the right */}
+      <div className="ml-auto flex items-center gap-10">
+        {/* Desktop Navigation */}
+        <nav className="hidden md:flex gap-10">
+          <ul className="flex gap-8">
+            {navItems.map((item, index) => (
+              <li key={index} className="cursor-pointer">
+                <ScrollLink
+                  className={`text-xl font-light relative ${
+                    router.pathname === `/${item.to}` ? "underline" : ""
+                  }`}
+                  to={item.to}
+                  spy={true}
+                  smooth={true}
+                  offset={-80}
+                  duration={500}
+                  onClick={closeMobileMenu}
+                >
+                  {item.label}
+                </ScrollLink>
+              </li>
+            ))}
+          </ul>
+        </nav>
 
-      {/* Desktop Navigation */}
-      <nav className="hidden md:flex items-center gap-10">
-        <ul className="flex gap-8">
-          {navItems.map((item, index) => (
-            <li key={index} className="cursor-pointer">
-              <ScrollLink
-                className={`text-xl font-light relative ${
-                  router.pathname === `/${item.to}` ? "underline" : ""
-                }`}
-                to={item.to}
-                spy={true}
-                smooth={true}
-                offset={-80}
-                duration={500}
-                onClick={closeMobileMenu}
-              >
-                {item.label}
-              </ScrollLink>
-            </li>
-          ))}
-        </ul>
-
-        {/* Theme Toggle Icon with Dropdown */}
-        <div>
+        <div className="pr-8">
           <IconButton
             onClick={(event) => setAnchorEl(event.currentTarget)}
             color="inherit"
-            
           >
             {theme === "dark" ? <LightModeIcon /> : <DarkModeIcon />}
           </IconButton>
@@ -122,9 +125,8 @@ export default function MainHeader() {
             open={Boolean(anchorEl)}
             onClose={() => setAnchorEl(null)}
             MenuListProps={{ onMouseLeave: () => setAnchorEl(null) }}
-           
           >
-            <MenuItem onClick={() => handleThemeChange("light")} >
+            <MenuItem onClick={() => handleThemeChange("light")}>
               <ListItemIcon>
                 <LightModeIcon />
               </ListItemIcon>
@@ -144,7 +146,7 @@ export default function MainHeader() {
             </MenuItem>
           </Menu>
         </div>
-      </nav>
+      </div>
 
       {/* Hamburger Icon */}
       <button
@@ -211,3 +213,4 @@ export default function MainHeader() {
     </header>
   );
 }
+
