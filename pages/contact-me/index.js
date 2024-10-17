@@ -15,6 +15,8 @@ import {
   faAddressBook
 } from "@fortawesome/free-solid-svg-icons";
 import { useTheme } from "@/ThemeContext";
+import { notification } from "antd"; // Import Ant Design notification
+
 const ContactPage = () => {
   const nameRef = useRef(null);
   const emailRef = useRef(null);
@@ -22,9 +24,16 @@ const ContactPage = () => {
   const messageRef = useRef(null);
 
   const [isLoading, setIsLoading] = useState(false);
-  const [message, setMessage] = useState("");
-  const [errors, setErrors] = useState({});
-  const {theme} = useTheme();
+  const { theme } = useTheme();
+
+  const openNotification = (type, message) => {
+    notification[type]({
+      message: message,
+      placement: "topRight", // Positioning the notification at the top right
+      duration: 2, // Duration for which notification is visible
+    });
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -34,7 +43,7 @@ const ContactPage = () => {
       !phoneRef.current.value ||
       !messageRef.current.value
     ) {
-      setErrors({ message: "Please fill out all fields." });
+      openNotification("error", "Please fill out all fields.");
       return;
     }
 
@@ -42,46 +51,50 @@ const ContactPage = () => {
       name: nameRef.current.value,
       email: emailRef.current.value,
       phone: phoneRef.current.value,
-      message: messageRef.current.value
+      message: messageRef.current.value,
     };
 
     setIsLoading(true);
-    setErrors({});
 
     try {
       await axios.post("/api/send-message", formData);
       setIsLoading(false);
-      setMessage("Message sent successfully!");
+      
+      // Clear form fields
       nameRef.current.value = "";
       emailRef.current.value = "";
       phoneRef.current.value = "";
       messageRef.current.value = "";
+      
+      // Show success notification
+      openNotification("success", "Message sent successfully!");
+
     } catch (error) {
       setIsLoading(false);
       console.error("Error sending message:", error);
-      setMessage("Failed, Please try again later.");
+      openNotification("error", "Failed to send message, please try again later.");
     }
   };
 
   // Define common sx styles for TextField
   const textFieldStyles = {
     "& .MuiInputBase-root": {
-      color: theme.text // text-gray-300 for input text
+      color: theme.text,
     },
     "& .MuiFormLabel-root": {
-      color: theme.text // text-gray-300 for labels
+      color: theme.text,
     },
     "& .MuiOutlinedInput-root": {
       "& fieldset": {
-        borderColor:theme.text // text-gray-300 for borders
+        borderColor: theme.text,
       },
       "&:hover fieldset": {
-        borderColor: theme.text // slightly darker on hover
+        borderColor: theme.text,
       },
       "&.Mui-focused fieldset": {
-        borderColor: theme.text // change border color on focus
-      }
-    }
+        borderColor: theme.text,
+      },
+    },
   };
 
   return (
@@ -113,7 +126,7 @@ const ContactPage = () => {
             </li>
             <li className="flex items-center">
               <FontAwesomeIcon
-                icon={faAddressBook}
+                icon={faPhoneAlt}
                 className="mr-2"
               />
               <span className="text-xl italic">Phone: &nbsp;+91 7690898460 </span>
@@ -131,9 +144,7 @@ const ContactPage = () => {
                 inputRef={nameRef}
                 fullWidth
                 required
-                error={!!errors.name}
-                helperText={errors.name}
-                sx={textFieldStyles} // Applying common styles
+                sx={textFieldStyles}
               />
             </Box>
             <Box>
@@ -144,9 +155,7 @@ const ContactPage = () => {
                 inputRef={emailRef}
                 fullWidth
                 required
-                error={!!errors.email}
-                helperText={errors.email}
-                sx={textFieldStyles} // Applying common styles
+                sx={textFieldStyles}
               />
             </Box>
             <Box>
@@ -157,9 +166,7 @@ const ContactPage = () => {
                 inputRef={phoneRef}
                 fullWidth
                 required
-                error={!!errors.phone}
-                helperText={errors.phone}
-                sx={textFieldStyles} // Applying common styles
+                sx={textFieldStyles}
               />
             </Box>
             <Box>
@@ -171,9 +178,7 @@ const ContactPage = () => {
                 required
                 multiline
                 rows={4}
-                error={!!errors.message}
-                helperText={errors.message}
-                sx={textFieldStyles} // Applying common styles
+                sx={textFieldStyles}
               />
             </Box>
             <div className="flex justify-between items-center">
@@ -181,10 +186,11 @@ const ContactPage = () => {
                 type="submit"
                 variant="contained"
                 color="primary"
+                disabled={isLoading} // Disable button while loading
                 className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded"
-              >
-                Send Message
+              >Send Message   {isLoading ? <CircularProgress className="ml-4" size={18} color="inherit" /> : ""}
               </Button>
+              
               <Button
                 type="reset"
                 variant="outlined"
@@ -194,18 +200,6 @@ const ContactPage = () => {
                 Reset
               </Button>
             </div>
-            {isLoading && (
-              <div className="flex items-center justify-center">
-                <span>Sending...</span>
-                <CircularProgress size={20} className="ml-2" />
-              </div>
-            )}
-            {message && !isLoading && (
-              <Typography className="text-center text-green-600 mt-4">
-                {message}
-                <FontAwesomeIcon icon={faCheckCircle} className="ml-2" />
-              </Typography>
-            )}
           </form>
         </div>
       </div>

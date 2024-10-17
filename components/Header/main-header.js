@@ -1,25 +1,24 @@
 import { useState, useEffect } from "react";
-import Image from "next/image";
 import { Link as ScrollLink } from "react-scroll";
 import { useRouter } from "next/router";
+import { Button, Dropdown, Drawer, Menu } from "antd";
 import {
-  IconButton,
-  Menu,
-  MenuItem,
-  ListItemIcon,
-  ListItemText
-} from "@mui/material";
-import DarkModeIcon from "@mui/icons-material/DarkMode";
-import LightModeIcon from "@mui/icons-material/LightMode";
-import SettingsBrightnessIcon from "@mui/icons-material/SettingsBrightness"; // Icon for system theme
+  SunOutlined,
+  MoonOutlined,
+  BulbOutlined,
+  MenuOutlined,
+  CloseOutlined
+} from "@ant-design/icons"; // Ant Design icons
 import { useTheme, themes } from "@/ThemeContext";
-// import "./header.css";
+
 export default function MainHeader() {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [anchorEl, setAnchorEl] = useState(null);
+  const [newTheme, setNewTheme] = useState("dark"); // State for newTheme
   const router = useRouter();
   const { theme, setTheme } = useTheme();
+
+  console.log("theme :", theme);
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!isMobileMenuOpen);
@@ -50,19 +49,63 @@ export default function MainHeader() {
     { label: "Contact me", to: "contact" }
   ];
 
-  const handleThemeChange = (newTheme) => {
-    console.log("newTheme:", newTheme);
-    if (newTheme === "system") {
+  const handleThemeChange = (newThemeValue) => {
+    console.log("newTheme:", newThemeValue);
+    setNewTheme(newThemeValue); // Update newTheme state
+    if (newThemeValue === "system") {
       const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
       setTheme(mediaQuery.matches ? themes.dark : themes.light);
-    } else if (themes[newTheme]) {
-      setTheme(themes[newTheme]);
+    } else if (themes[newThemeValue]) {
+      setTheme(themes[newThemeValue]);
     } else {
-      console.error("Invalid theme:", newTheme);
+      console.error("Invalid theme:", newThemeValue);
       setTheme(themes.light);
     }
-    setAnchorEl(null);
   };
+
+  const themeMenu = (
+    <Menu
+      style={{
+        backgroundColor: theme.background,
+        color: theme.text
+      }}
+    >
+      <Menu.Item
+        key="light"
+        onClick={() => handleThemeChange("light")}
+        style={{
+          color: theme.text,
+          fontSize: "18px"
+        }}
+      >
+        <SunOutlined className="mr-2" />
+        Light
+      </Menu.Item>
+      <Menu.Item
+        key="dark"
+        onClick={() => handleThemeChange("dark")}
+        style={{
+          color: theme.text,
+          fontSize: "18px"
+        }}
+      >
+        <MoonOutlined className="mr-2" />
+        Dark
+      </Menu.Item>
+      <Menu.Item
+        key="system"
+        onClick={() => handleThemeChange("system")}
+        style={{
+          color: theme.text,
+          fontSize: "18px"
+        }}
+      >
+        <BulbOutlined className="mr-2" />
+        System
+      </Menu.Item>
+    </Menu>
+  );
+
   return (
     <header
       className={`flex fixed w-full items-center justify-between ${
@@ -75,22 +118,10 @@ export default function MainHeader() {
         className={`p-1 cursor-pointer ${isScrolled ? "flip-animation" : ""}`}
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
       >
-        {/* Commented out image */}
-        {/* 
-        <Image
-          src="/images/Rahul.png"
-          alt="Logo image"
-          width={175}
-          height={60}
-        /> 
-        */}
-        {/* New logic with 'R' letter */}
-        <div className="text-5xl font-bold ">R</div>
+        <div className="text-5xl font-bold">R</div>
       </div>
 
-      {/* Flex container for nav and mode icon aligned to the right */}
       <div className="ml-auto flex items-center gap-10">
-        {/* Desktop Navigation */}
         <nav className="hidden md:flex gap-10">
           <ul className="flex gap-8">
             {navItems.map((item, index) => (
@@ -112,105 +143,88 @@ export default function MainHeader() {
             ))}
           </ul>
         </nav>
-
         <div className="pr-8">
-          <IconButton
-            onClick={(event) => setAnchorEl(event.currentTarget)}
-            color="inherit"
-          >
-            {theme === "dark" ? <LightModeIcon /> : <DarkModeIcon />}
-          </IconButton>
-          <Menu
-            anchorEl={anchorEl}
-            open={Boolean(anchorEl)}
-            onClose={() => setAnchorEl(null)}
-            MenuListProps={{ onMouseLeave: () => setAnchorEl(null) }}
-          >
-            <MenuItem onClick={() => handleThemeChange("light")}>
-              <ListItemIcon>
-                <LightModeIcon />
-              </ListItemIcon>
-              <ListItemText primary="Light" />
-            </MenuItem>
-            <MenuItem onClick={() => handleThemeChange("dark")}>
-              <ListItemIcon>
-                <DarkModeIcon />
-              </ListItemIcon>
-              <ListItemText primary="Dark" />
-            </MenuItem>
-            <MenuItem onClick={() => handleThemeChange("system")}>
-              <ListItemIcon>
-                <SettingsBrightnessIcon />
-              </ListItemIcon>
-              <ListItemText primary="System" />
-            </MenuItem>
-          </Menu>
+          <Dropdown overlay={themeMenu} trigger={["hover"]}>
+            <Button
+              className={`border-none hover:text-gray-500`}
+              style={{
+                boxShadow: "none",
+                backgroundColor: "transparent",
+                color: theme.text,
+                height: "30px"
+              }}
+            >
+              {newTheme === "dark" ? (
+                <SunOutlined
+                  className={` ${theme.text}`}
+                  style={{ fontSize: "24px" }}
+                />
+              ) : (
+                <MoonOutlined
+                  className={` ${theme.text}`}
+                  style={{ fontSize: "24px" }}
+                />
+              )}
+            </Button>
+          </Dropdown>
         </div>
       </div>
 
-      {/* Hamburger Icon */}
       <button
         onClick={toggleMobileMenu}
-        className="md:hidden focus:outline-none"
+        className={`md:hidden focus:outline-none  text-${theme.text}`}
       >
         {isMobileMenuOpen ? (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={2}
-            stroke="currentColor"
-            className="w-6 h-6"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M6 18L18 6M6 6l12 12"
-            />
-          </svg>
+          <CloseOutlined style={{ fontSize: "24px", color: theme.text }} />
         ) : (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={2}
-            stroke="currentColor"
-            className="w-6 h-6"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M4 6h16M4 12h16m-7 6h7"
-            />
-          </svg>
+          <MenuOutlined style={{ fontSize: "24px", color: theme.text }} />
         )}
       </button>
 
-      {/* Mobile Menu */}
-      {isMobileMenuOpen && (
-        <div className="absolute top-20 right-0 bg-[#34373b] shadow-md w-[100%] h-[100vh]">
-          <ul className="flex flex-col items-center gap-4 py-4">
-            {navItems.map((item, index) => (
-              <li key={index}>
-                <ScrollLink
-                  className={`text-xl font-light relative ${
-                    router.pathname === `/${item.to}` ? "underline" : ""
-                  }`}
-                  to={item.to}
-                  spy={true}
-                  smooth={true}
-                  offset={-80}
-                  duration={500}
-                  onClick={closeMobileMenu}
-                >
-                  {item.label}
-                </ScrollLink>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
+      <Drawer
+        title={
+          <div className="flex justify-between w-full">
+            <span style={{ color: theme.text }}>Menu</span>
+            {/* Close icon on the right */}
+            <CloseOutlined
+              onClick={closeMobileMenu}
+              style={{
+                fontSize: "24px",
+                color: theme.text,
+                cursor: "pointer"
+              }}
+            />
+          </div>
+        }
+        placement="right"
+        closable={false} // Disable the default close button since we added custom
+        open={isMobileMenuOpen}
+        style={{
+          padding: "16px 0px",
+          backgroundColor: theme.background,
+          color: theme.text
+        }}
+      >
+        <ul className="flex flex-col items-left gap-4 py-4">
+          {navItems.map((item, index) => (
+            <li key={index}>
+              <ScrollLink
+                className={`text-xl font-light relative ${
+                  router.pathname === `/${item.to}` ? "underline" : ""
+                }`}
+                to={item.to}
+                spy={true}
+                smooth={true}
+                offset={-80}
+                duration={500}
+                onClick={closeMobileMenu}
+              >
+                {item.label}
+              </ScrollLink>
+            </li>
+          ))}
+        </ul>
+      </Drawer>
     </header>
   );
 }
-
