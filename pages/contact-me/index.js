@@ -134,6 +134,7 @@ const ContactPage = () => {
           </ul>
         </div>
 
+
         {/* Right Section - Contact Form */}
         <div className="w-full md:w-1/2 p-8">
           <form onSubmit={handleSubmit} className="space-y-6">
