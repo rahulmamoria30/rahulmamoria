@@ -134,6 +134,7 @@ const ContactPage = () => {
           </ul>
         </div>
 
+
         {/* Right Section - Contact Form */}
         <div className="w-full md:w-1/2 p-8">
           <form onSubmit={handleSubmit} className="space-y-6">
@@ -187,7 +188,7 @@ const ContactPage = () => {
                 variant="contained"
                 color="primary"
                 disabled={isLoading} // Disable button while loading
-                className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded"
+                className="bg-[#FF6347] hover:text-white  hover:bg-[#E5533C]  text-white px-6 py-2 rounded"
               >Send Message   {isLoading ? <CircularProgress className="ml-4" size={18} color="inherit" /> : ""}
               </Button>
               
@@ -195,7 +196,7 @@ const ContactPage = () => {
                 type="reset"
                 variant="outlined"
                 color="secondary"
-                className="border-blue-500 text-blue-500 hover:bg-blue-50 px-6 py-2 rounded"
+                className="border-[#FF6347] text-[#FF6347] hover:bg-[#E5533C] hover:text-white px-6 py-2 rounded"
               >
                 Reset
               </Button>

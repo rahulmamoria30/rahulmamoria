@@ -25,11 +25,11 @@ export default function AboutPage() {
             <h1 className="text-3xl md:text-4xl lg:text-5xl leading-8 font-bold tracking-tight ">
               Rahul Mamoria
             </h1>
-            <p className="mt-2 text-lg md:text-xl text-blue-500">Software Engineer</p>
+            <p className="mt-2 text-lg md:text-xl text-[#FF6347]">Software Engineer</p>
             
             {/* Location */}
             <div className="mt-2 flex items-center ">
-              <MapPin className="h-5 w-5 text-blue-500 mr-2" />
+              <MapPin className="h-5 w-5 text-[#FF6347] mr-2" />
               <span className="text-base md:text-lg">Hyderabad, India</span>
             </div>
 
@@ -43,16 +43,16 @@ export default function AboutPage() {
 
             {/* Social Icons */}
             <div className="mt-4 flex space-x-4">
-              <a href="mailto:rahulmamoria@gmail.com" className="text-blue-500 hover:text-blue-600">
+              <a href="mailto:rahulmamoria@gmail.com" className="text-[#FF6347] hover:ttext-[#E5533C]">
                 <Mail className="h-6 w-6" />
               </a>
-              <a href="https://linkedin.com/in/rahulmm07" className="text-blue-500 hover:text-blue-600">
+              <a href="https://linkedin.com/in/rahulmm07" className="text-[#FF6347] hover:ttext-[#E5533C]">
                 <LinkedIn className="h-6 w-6" />
               </a>
-              <a href="https://www.instagram.com/rahul_rm__/" className="text-blue-500 hover:text-blue-600">
+              <a href="https://www.instagram.com/rahul_rm__/" className="text-[#FF6347] hover:ttext-[#E5533C]">
                 <Instagram className="h-6 w-6" />
               </a>
-              <a href="https://github.com/rahulmamoria30" className="text-blue-500 hover:text-blue-600">
+              <a href="https://github.com/rahulmamoria30" className="text-[#FF6347] hover:ttext-[#E5533C]">
                 <GitHub className="h-6 w-6" />
               </a>
             </div>
