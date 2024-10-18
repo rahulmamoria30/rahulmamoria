@@ -16,6 +16,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useTheme } from "@/ThemeContext";
 import { notification } from "antd"; // Import Ant Design notification
+import Title from "@/components/Titile/Title";
 
 const ContactPage = () => {
   const nameRef = useRef(null);
@@ -30,7 +31,7 @@ const ContactPage = () => {
     notification[type]({
       message: message,
       placement: "topRight", // Positioning the notification at the top right
-      duration: 2, // Duration for which notification is visible
+      duration: 2 // Duration for which notification is visible
     });
   };
 
@@ -51,7 +52,7 @@ const ContactPage = () => {
       name: nameRef.current.value,
       email: emailRef.current.value,
       phone: phoneRef.current.value,
-      message: messageRef.current.value,
+      message: messageRef.current.value
     };
 
     setIsLoading(true);
@@ -59,49 +60,49 @@ const ContactPage = () => {
     try {
       await axios.post("/api/send-message", formData);
       setIsLoading(false);
-      
+
       // Clear form fields
       nameRef.current.value = "";
       emailRef.current.value = "";
       phoneRef.current.value = "";
       messageRef.current.value = "";
-      
+
       // Show success notification
       openNotification("success", "Message sent successfully!");
-
     } catch (error) {
       setIsLoading(false);
       console.error("Error sending message:", error);
-      openNotification("error", "Failed to send message, please try again later.");
+      openNotification(
+        "error",
+        "Failed to send message, please try again later."
+      );
     }
   };
 
   // Define common sx styles for TextField
   const textFieldStyles = {
     "& .MuiInputBase-root": {
-      color: theme.text,
+      color: theme.text
     },
     "& .MuiFormLabel-root": {
-      color: theme.text,
+      color: theme.text
     },
     "& .MuiOutlinedInput-root": {
       "& fieldset": {
-        borderColor: theme.text,
+        borderColor: theme.text
       },
       "&:hover fieldset": {
-        borderColor: theme.text,
+        borderColor: theme.text
       },
       "&.Mui-focused fieldset": {
-        borderColor: theme.text,
-      },
-    },
+        borderColor: theme.text
+      }
+    }
   };
 
   return (
     <section className="py-16 px-5 font-boska ">
-      <h1 className="text-4xl md:text-5xl lg:text-6xl py-8 md:py-12 lg:py-16">
-        Let's connect
-      </h1>
+      <Title title="Let's connect" />
 
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row ">
         <div className="w-full md:w-1/2 p-8 rounded-l-lg">
@@ -118,22 +119,19 @@ const ContactPage = () => {
           </p>
           <ul className="space-y-2 ">
             <li className="flex items-center">
-              <FontAwesomeIcon
-                icon={faEnvelope}
-                className="mr-2"
-              />
-              <span className="text-xl italic">Email: &nbsp;rahulmamoria@gmail.com </span>
+              <FontAwesomeIcon icon={faEnvelope} className="mr-2" />
+              <span className="text-xl italic">
+                Email: &nbsp;rahulmamoria@gmail.com{" "}
+              </span>
             </li>
             <li className="flex items-center">
-              <FontAwesomeIcon
-                icon={faPhoneAlt}
-                className="mr-2"
-              />
-              <span className="text-xl italic">Phone: &nbsp;+91 7690898460 </span>
+              <FontAwesomeIcon icon={faPhoneAlt} className="mr-2" />
+              <span className="text-xl italic">
+                Phone: &nbsp;+91 7690898460{" "}
+              </span>
             </li>
           </ul>
         </div>
-
 
         {/* Right Section - Contact Form */}
         <div className="w-full md:w-1/2 p-8">
@@ -189,9 +187,19 @@ const ContactPage = () => {
                 color="primary"
                 disabled={isLoading} // Disable button while loading
                 className="bg-[#FF6347] hover:text-white  hover:bg-[#E5533C]  text-white px-6 py-2 rounded"
-              >Send Message   {isLoading ? <CircularProgress className="ml-4" size={18} color="inherit" /> : ""}
+              >
+                Send Message{" "}
+                {isLoading ? (
+                  <CircularProgress
+                    className="ml-4"
+                    size={18}
+                    color="inherit"
+                  />
+                ) : (
+                  ""
+                )}
               </Button>
-              
+
               <Button
                 type="reset"
                 variant="outlined"

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import Title from '@/components/Titile/Title';
 
 const CertificatePage = () => {
   // Sample images for the carousel
@@ -62,10 +63,7 @@ const CertificatePage = () => {
 
   return (
     <div className="font-boska px-5 sm:px-6 md:px-8 ">
-      <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl  py-6 md:py-12 lg:py-16">
-        Certifications
-      </h1>
-
+      <Title title="Certifications" />
       <div className="relative mx-auto px-4 sm:px-8 md:px-12 lg:px-20 max-w-full md:max-w-3xl lg:max-w-4xl">
         {/* Left Arrow */}
         <button 

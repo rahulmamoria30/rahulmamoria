@@ -74,8 +74,8 @@ export default function HomePage() {
       <canvas ref={canvasRef} className="absolute top-0 left-0 w-full h-full -z-10" />
       
       <div className="flex flex-col items-center justify-center flex-grow">
-        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl capitalize font-bold text-center">
-          Rahul Mamoria
+        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl capitalize font-bold text-center">
+        नमस्ते, I'm Rahul
         </h1>
         <p className="mt-2 text-lg sm:text-xl md:text-2xl max-w-xl text-center">
           Aspiring software engineer committed to creativity and growth.

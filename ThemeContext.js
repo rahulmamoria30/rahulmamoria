@@ -17,7 +17,7 @@ export const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState(themes.light);
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: light)');
     const handleChange = (e) => {
       setTheme(e.matches ? themes.dark : themes.light);
     };

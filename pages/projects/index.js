@@ -1,3 +1,4 @@
+import Title from "@/components/Titile/Title";
 import ProjectCard from "./project-card";
 
 export default function ProjectsPage() {
@@ -6,9 +7,7 @@ export default function ProjectsPage() {
       {/* Heading section */}
       <div className="flex items-center space-x-4">
       
-        <h1 className=" text-3xl sm:text-4xl md:text-5xl lg:text-6xl py-4 sm:py-6 md:py-8 lg:py-12">
-          Projects
-        </h1>
+      <Title title="Projects" />
       </div>
 
       <section className="mt-6 sm:mt-8 md:mt-12 lg:mt-16">

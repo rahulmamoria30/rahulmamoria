@@ -13,6 +13,7 @@ import {
 } from "@mui/material";
 import experienceData from "@/data/experience-data";
 import { useTheme } from "@/ThemeContext"; // Import useTheme
+import Title from "../Titile/Title";
 
 export default function Experience() {
   const { theme } = useTheme(); 
@@ -21,11 +22,7 @@ export default function Experience() {
 
   return (
     <section className={`px-5 font-boska md:px-8`}>
-      <h1
-        className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl py-6 md:py-12 lg:py-16`}
-      >
-        Work Experiences
-      </h1>
+         <Title title="Work Experiences" subtitle="Path of Growth" />
 
       <div className="space-y-4 ">
         {experienceData.map((experience, index) => (
