@@ -84,7 +84,7 @@ const ProjectDialog = ({ project, onClose }) => {
         </ul>
       </DialogContent>
       <DialogActions sx={{ backgroundColor: theme.background }}>
-        <Button onClick={onClose} color="primary">
+        <Button onClick={onClose}  className=" text-[#FF6347] hover:bg-[#E5533C] hover:text-white">
           Close
         </Button>
       </DialogActions>
@@ -155,7 +155,8 @@ function ProjectCard() {
                   }}
                 />
               </IconButton>
-              <Button onClick={() => handleCheckProjectClick(project)}>
+              <Button onClick={() => handleCheckProjectClick(project)} 
+              className=" text-[#FF6347] hover:bg-[#E5533C] hover:text-white">
                 Description
               </Button>
             </div>

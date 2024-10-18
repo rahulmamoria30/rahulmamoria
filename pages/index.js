@@ -42,3 +42,6 @@ export default function Home() {
     </>
   );
 }
+
+
+{/* <canvas class="particles-js-canvas-el" style="width: 100%; height: 100%;" width="1140" height="572"></canvas> */}
