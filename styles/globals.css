@@ -6,6 +6,7 @@
 body {
   margin: 0;
   padding: 0 100px; /* Adjust padding for dark mode */
+  letter-spacing: 1px;
 }
 
 .light {
@@ -17,6 +18,121 @@ body {
   background: #34373b;
   color: #e5e7eb; 
  
+}
+
+
+/* styles.css or your global CSS file */
+.border-effect:before,
+.border-effect:after {
+  content: '';
+  position: absolute;
+  background-color: #FF6347; /* Change color as needed */
+}
+
+.border-effect:before {
+  left: 0;
+  bottom: 0;
+  width: 75%;
+  height: 75%;
+  border-left: 4px solid;
+  border-bottom: 4px solid;
+  border-radius: 0 0 0 0.5rem; /* Adjust for rounded corners */
+}
+
+
+
+
+
+
+.education-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.education-card:hover {
+  transform: translateY(-10px);
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+}
+
+.education-card:hover .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  text-align: center;
+}
+
+.card-front {
+  background: white;
+  z-index: 2;
+}
+
+.card-back {
+  background: #FF6347; /* Back color */
+  color: white;
+  transform: rotateY(180deg);
+}
+
+.icon {
+  font-size: 3rem;
+  color: #FF6347;
+  margin-bottom: 10px;
+}
+
+
+
+.education-section {
+  padding: 40px 0;
+  background-color: #f9f9f9; /* Light background for contrast */
+  border-radius: 10px; /* Rounded corners for the section */
+}
+
+.timeline-content {
+  padding: 20px; /* Increased padding for content */
+  background-color: #ffffff; /* White background for cards */
+  border-radius: 10px; /* Rounded corners for content */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  transition: box-shadow 0.3s; /* Smooth shadow transition */
+}
+
+.timeline-content:hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+}
+
+.ant-timeline-item-content {
+  padding-left: 10px; /* Adjust left padding for better spacing */
+}
+
+.ant-timeline-item-dot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px; /* Increased dot size */
+  height: 50px; /* Increased dot size */
+  background-color: #fff; /* White background for dot */
+  border: 2px solid #FF6347; /* Border for dot */
+  border-radius: 50%; /* Circular dot */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for dot */
 }
 
 
@@ -38,6 +154,10 @@ body {
 @media (max-width: 768px) {
   body {
     padding: 0; /* Remove padding for mobile devices */
+    
+  }
+  .timeline-content {
+    padding: 10px; /* Adjust padding for smaller devices */
   }
 }
 

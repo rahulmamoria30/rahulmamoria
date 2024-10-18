@@ -112,7 +112,7 @@ export default function MainHeader() {
         isScrolled
           ? `backdrop-blur-md ${theme.headerBackground}/80 shadow-lg`
           : theme.headerBackground
-      } top-0 left-0 z-10 px-4 md:px-8 lg:px-24 py-4 transition-all duration-300 ease-in-out font-boska`}
+      } top-0 left-0 z-20 px-4 md:px-8 lg:px-24 py-4 transition-all duration-300 ease-in-out font-boska`}
     >
       <div
         className={`p-1 cursor-pointer ${isScrolled ? "flip-animation" : ""}`}

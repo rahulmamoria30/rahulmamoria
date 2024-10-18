@@ -5,6 +5,7 @@ import AboutPage from "./about";
 import ProjectsPage from "./projects";
 import CertificatePage from "./certificates";
 import ContactPage from "./contact-me";
+import EducationComponent from "@/components/Education/educationComponent";
 
 export default function Home() {
   return (
@@ -20,6 +21,9 @@ export default function Home() {
         {/* <hr /> */}
         <section id="skills" className="pb-16">
           <MySkills />
+        </section>
+        <section id="skills" className="pb-16">
+          <EducationComponent/>
         </section>
         {/* <hr /> */}
         <section id="experience" className="pb-16">

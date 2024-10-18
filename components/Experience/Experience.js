@@ -13,7 +13,7 @@ import {
 } from "@mui/material";
 import experienceData from "@/data/experience-data";
 import { useTheme } from "@/ThemeContext"; // Import useTheme
-import Title from "../Titile/Title";
+import Title from "@/components/Title/Title";
 
 export default function Experience() {
   const { theme } = useTheme(); 

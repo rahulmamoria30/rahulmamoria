@@ -1,4 +1,4 @@
-import Title from "../Titile/Title";
+import Title from "@/components/Title/Title";
 import Skills from "./skills";
 
 export default function MySkills() {

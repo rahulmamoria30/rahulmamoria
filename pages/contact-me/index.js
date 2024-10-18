@@ -16,7 +16,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useTheme } from "@/ThemeContext";
 import { notification } from "antd"; // Import Ant Design notification
-import Title from "@/components/Titile/Title";
+import Title from "@/components/Title/Title";
 
 const ContactPage = () => {
   const nameRef = useRef(null);

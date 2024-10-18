@@ -1,48 +1,33 @@
-import { Accordion, AccordionSummary, AccordionDetails, Typography } from '@mui/material';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSchool, faCalendarAlt, faGraduationCap } from '@fortawesome/free-solid-svg-icons';
-import Eduction_details from '@/eduction-data';
-import style from './Education.module.css';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGraduationCap } from "@fortawesome/free-solid-svg-icons";
+import Education_details from "@/eduction-data";
+import Title from "../Title/Title";
+import { Timeline } from 'antd';
+// import './education.css'
 
 export default function EducationComponent() {
   return (
-    <main id="education">
-      <section className={style.my_educations}>
-        <div className={style.grid_container}>
-          {Eduction_details.map((education, index) => (
-            <div key={index} className={style.grid_item}>
-              <Accordion>
-                <AccordionSummary
-                  expandIcon={<ExpandMoreIcon />}
-                  aria-controls={`panel${index}-content`}
-                  id={`panel${index}-header`}
-                >
-                  <Typography className={style.standard}>{education.standard}</Typography>
-                </AccordionSummary>
-                <AccordionDetails>
-                  <div className={style.education_detail}>
-                    <FontAwesomeIcon icon={faSchool} className={style.edu_icon} />
-                    <Typography>{education.school_name}</Typography>
-                  </div>
-                  <div className={style.education_detail}>
-                    <FontAwesomeIcon icon={faCalendarAlt} className={style.edu_icon} />
-                    <Typography>{education.year}</Typography>
-                  </div>
-                  <div className={style.education_detail}>
-                    <FontAwesomeIcon icon={faGraduationCap} className={style.edu_icon} />
-                    <Typography>{education.grade}</Typography>
-                  </div>
-                  
-                  <div className={style.education_description}>
-                    <Typography>{education.description}</Typography>
-                  </div>
-                </AccordionDetails>
-              </Accordion>
+    <section className="education-section mx-auto px-4 font-boska">
+      <Title title="Education" subtitle="Padhai Likhai" />
+      <Timeline mode="alternate" style={{ margin: '0 20px' }}>
+        {Education_details.map((education, index) => (
+          <Timeline.Item
+            key={index}
+            dot={<FontAwesomeIcon icon={faGraduationCap} style={{ fontSize: '24px', color: '#FF6347' }} />}
+            style={{ marginBottom: '40px' }} 
+          >
+            <div className="timeline-content text-left"> 
+              <h3 className="text-xl sm:text-2xl font-bold text-gray-800">{education.school_name}</h3>
+              <span className="text-lg text-[#FF6347]">
+                {education.year}, {education.grade}
+              </span>
+              <p className="text-sm" style={{ marginTop: '10px' }}>
+                {education.description || "No additional details available."}
+              </p>
             </div>
-          ))}
-        </div>
-      </section>
-    </main>
+          </Timeline.Item>
+        ))}
+      </Timeline>
+    </section>
   );
 }
