@@ -1,42 +1,43 @@
-import { 
-  GitHubLogoIcon, 
-  LinkedInLogoIcon, 
+import {
+  GitHubLogoIcon,
+  LinkedInLogoIcon,
   TwitterLogoIcon,
   StarIcon,
   ReaderIcon,
   CodeIcon,
-  Pencil1Icon
+  Pencil1Icon,
+  GlobeIcon,
+  InstagramLogoIcon,
 } from "@radix-ui/react-icons";
-import { MapPin, Instagram } from "lucide-react";
 
 export const profileData = {
   name: "Rahul Mamoria",
   role: "Full Stack Developer",
   location: "Hyderabad, India",
+  locationIcon: GlobeIcon,
   image: "/profile.jpeg",
-  locationIcon: MapPin
 };
 
 export const socialLinks = [
   {
-    icon: GitHubLogoIcon,
-    href: "https://github.com/yourusername",
     label: "GitHub",
+    href: "https://github.com/rahulmamoria",
+    icon: GitHubLogoIcon,
   },
   {
-    icon: LinkedInLogoIcon,
-    href: "https://linkedin.com/in/yourusername",
     label: "LinkedIn",
+    href: "https://linkedin.com/in/rahulmamoria",
+    icon: LinkedInLogoIcon,
   },
   {
+    label: "Twitter",
+    href: "https://twitter.com/rahulmamoria",
     icon: TwitterLogoIcon,
-    href: "https://twitter.com/yourusername",
-    label: "X (Twitter)",
   },
   {
-    icon: Instagram,
-    href: "https://instagram.com/yourusername",
     label: "Instagram",
+    href: "https://instagram.com/rahulmamoria",
+    icon: InstagramLogoIcon,
   },
 ];
 
@@ -45,7 +46,7 @@ export const externalLinks = [
     title: "Hackathon Diaries",
     url: "/hackathon",
     icon: StarIcon,
-  }, 
+  },
   {
     title: "My Blogs",
     url: "https://rahulmamoria.hashnode.dev/",

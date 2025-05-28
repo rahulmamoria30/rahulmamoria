@@ -1,11 +1,15 @@
 "use client";
 
-import { Link as NextLink, Mail, MapPin } from "lucide-react";
+import { Link as NextLink, Mail, MapPin, Instagram, Send, X } from "lucide-react";
 import { SectionTitle } from "@/components/ui/section-title";
 import { useState } from "react";
 import { sendContactForm, type ContactFormData } from "@/api/contact";
 import { socialLinks } from "@/constants/sidebar";
 import Link from "next/link";
+import { FormItem } from "@/components/ui/form-item";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Button } from "@/components/ui/button";
 import {
   Tooltip,
   TooltipContent,
@@ -48,6 +52,11 @@ export function Contact() {
     }
   };
 
+  const handleReset = () => {
+    setFormData({ name: "", email: "", phone: "", message: "" });
+    setStatus({ type: null, message: "" });
+  };
+
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -63,7 +72,7 @@ export function Contact() {
         <div className="bg-card/50 backdrop-blur-sm rounded-lg p-8 border border-border">
           <div className="space-y-8">
             {/* Profile Section */}
-            <div className="text-center space-y-4">
+            <div className="text-start space-y-4">
               <h3 className="text-2xl font-bold text-foreground">Let's Connect</h3>
               <p className="text-muted-foreground">
                 Feel free to reach out for collaborations or just a friendly hello
@@ -77,12 +86,12 @@ export function Contact() {
                   <Mail className="h-6 w-6" />
                 </div>
                 <div>
-                  <h4 className="text-sm font-medium text-muted-foreground">Write me email at</h4>
+                  <h4 className="text-sm font-medium text-muted-foreground">Write me an email at</h4>
                   <Link
                     href="mailto:rahulmamoria@gmail.com"
                     className="text-base font-medium text-foreground hover:text-primary transition-colors"
                   >
-                    rahulmamoria@gmail.com
+                    rahulmamoria07@gmail.com
                   </Link>
                 </div>
               </div>
@@ -133,54 +142,40 @@ export function Contact() {
           <h3 className="text-xl font-semibold mb-4">Send Message</h3>
           
           <form onSubmit={handleSubmit} className="space-y-4">
-            <div>
-              <label htmlFor="name" className="block text-sm font-medium mb-1">
-                Name
-              </label>
-              <input
-                type="text"
+            <FormItem label="Name" id="name">
+              <Input
                 id="name"
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
                 required
-                className="w-full px-3 py-2 bg-background/50 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary/50"
                 placeholder="Your name"
               />
-            </div>
+            </FormItem>
             
-            <div>
-              <label htmlFor="email" className="block text-sm font-medium mb-1">
-                Email
-              </label>
-              <input
+            <FormItem label="Email" id="email">
+              <Input
                 type="email"
                 id="email"
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
                 required
-                className="w-full px-3 py-2 bg-background/50 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary/50"
                 placeholder="Your email"
               />
-            </div>
-
+            </FormItem>
             
-            <div>
-              <label htmlFor="message" className="block text-sm font-medium mb-1">
-                Message
-              </label>
-              <textarea
+            <FormItem label="Message" id="message">
+              <Textarea
                 id="message"
                 name="message"
                 value={formData.message}
                 onChange={handleChange}
                 required
                 rows={4}
-                className="w-full px-3 py-2 bg-background/50 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary/50"
                 placeholder="Your message"
               />
-            </div>
+            </FormItem>
 
             {status.message && (
               <div
@@ -194,13 +189,25 @@ export function Contact() {
               </div>
             )}
             
-            <button
-              type="submit"
-              disabled={isLoading}
-              className="w-full bg-primary text-primary-foreground py-2 px-4 rounded-md hover:bg-primary/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              {isLoading ? "Sending..." : "Send Message"}
-            </button>
+            <div className="flex justify-between gap-4">
+              <Button
+                type="submit"
+                disabled={isLoading}
+                isLoading={isLoading}
+                className="w-32"
+              >
+                Send
+                <Send className="w-4 h-4 ml-2" />
+              </Button>
+              <Button
+                type="button"
+                onClick={handleReset}
+                variant="outline"
+              >
+                Reset
+                <X className="w-4 h-4 ml-2" />
+              </Button>
+            </div>
           </form>
         </div>
       </div>

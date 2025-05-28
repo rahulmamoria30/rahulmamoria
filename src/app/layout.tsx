@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { Sidebar } from "@/components/Sidebar";
 import { Background } from "@/components/Background";
 import { TopNav } from "@/components/TopNav";
+import { Footer } from "@/components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -52,14 +53,15 @@ export default function RootLayout({
         >
           <Background />
           <div className="flex h-screen">
-            <div className="w-[350px]">
+            <div className="flex-none">
               <Sidebar />
             </div>
             <div className="flex-1 h-screen overflow-y-auto">
               <TopNav />
-              <div className="container mx-auto px-8 py-12">
+              <div className="w-full px-8 py-12">
                 {children}
               </div>
+              <Footer/>
             </div>
           </div>
         </ThemeProvider>

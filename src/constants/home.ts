@@ -27,12 +27,12 @@ export const skillCards = [
   {
     icon: Code,
     title: "Frontend Development",
-    description: "Building responsive and interactive user interfaces with modern frameworks like React, Next.js, and TypeScript."
+    description: "Crafting responsive UIs with React, Next.js, and TypeScript."
   },
   {
     icon: Server,
     title: "Backend Development",
-    description: "Creating robust and scalable server-side applications and APIs using Node.js, Python, and various database technologies."
+    description: "Building scalable APIs with Node.js, Python, and modern databases."
   }
 ];
 

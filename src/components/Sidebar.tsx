@@ -20,8 +20,9 @@ export function Sidebar() {
 
   return (
     <div
-      className={`relative h-screen border-r border-border bg-background/50 backdrop-blur-sm transition-all duration-300 ${isCollapsed ? "w-20" : "w-80"
-        }`}
+      className={`relative h-screen border-r border-border bg-background/50 backdrop-blur-sm transition-all duration-300 ${
+        isCollapsed ? "w-20" : "w-80"
+      }`}
     >
       <button
         onClick={() => setIsCollapsed(!isCollapsed)}
@@ -42,6 +43,10 @@ export function Sidebar() {
             width={isCollapsed ? 48 : 96}
             height={isCollapsed ? 48 : 96}
             className="rounded-full border-2 border-primary/20"
+            onError={(e) => {
+              const target = e.target as HTMLImageElement;
+              target.src = "/placeholder.jpg";
+            }}
           />
           {!isCollapsed && (
             <div className="text-center">
@@ -72,7 +77,7 @@ export function Sidebar() {
                           pathname === link.url ? "text-primary" : ""
                         }`}
                       >
-                        <link.icon className='h-6 w-6' />
+                        <link.icon className='h-5 w-5' />
                         {!isCollapsed && <p className="text-md font-medium">{link.title}</p>}
                       </Link>
                     ) : (
@@ -82,7 +87,7 @@ export function Sidebar() {
                         rel="noopener noreferrer"
                         className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors"
                       >
-                        <link.icon className='h-6 w-6' />
+                        <link.icon className='h-5 w-5' />
                         {!isCollapsed && <p className="text-md font-medium">{link.title}</p>}
                       </Link>
                     )}
