@@ -114,7 +114,7 @@ export function Sidebar() {
                     rel="noopener noreferrer"
                     className="text-muted-foreground hover:text-primary transition-colors"
                   >
-                    <link.icon className='h-6 w-6' />
+                    <link.icon className='h-5 w-5' />
                   </Link>
                 </TooltipTrigger>
                 <TooltipContent side={isCollapsed ? "right" : "top"}>
