@@ -7,7 +7,7 @@ import {
   CodeIcon,
   Pencil1Icon
 } from "@radix-ui/react-icons";
-import { MapPin } from "lucide-react";
+import { MapPin, Instagram } from "lucide-react";
 
 export const profileData = {
   name: "Rahul Mamoria",
@@ -32,6 +32,11 @@ export const socialLinks = [
     icon: TwitterLogoIcon,
     href: "https://twitter.com/yourusername",
     label: "X (Twitter)",
+  },
+  {
+    icon: Instagram,
+    href: "https://instagram.com/yourusername",
+    label: "Instagram",
   },
 ];
 

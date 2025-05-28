@@ -1,11 +1,20 @@
 "use client";
 
-import { Link, Mail, MapPin, Phone } from "lucide-react";
+import { Link as NextLink, Mail, MapPin } from "lucide-react";
 import { SectionTitle } from "@/components/ui/section-title";
 import { useState } from "react";
+import { sendContactForm, type ContactFormData } from "@/api/contact";
+import { socialLinks } from "@/constants/sidebar";
+import Link from "next/link";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 export function Contact() {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<ContactFormData>({
     name: "",
     email: "",
     phone: "",
@@ -23,25 +32,12 @@ export function Contact() {
     setStatus({ type: null, message: "" });
 
     try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
+      await sendContactForm(formData);
+      setStatus({
+        type: "success",
+        message: "Message sent successfully!",
       });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        setStatus({
-          type: "success",
-          message: "Message sent successfully!",
-        });
-        setFormData({ name: "", email: "", phone: "", message: "" });
-      } else {
-        throw new Error(data.error || "Failed to send message");
-      }
+      setFormData({ name: "", email: "", phone: "", message: "" });
     } catch (error) {
       setStatus({
         type: "error",
@@ -64,35 +60,70 @@ export function Contact() {
       <SectionTitle icon={Mail} title="Contact" />
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Contact Information */}
-        <div className="bg-card/50 backdrop-blur-sm rounded-lg p-6 border border-border">
-          <h3 className="text-xl font-semibold mb-4">Get in Touch</h3>
-          
-          <div className="space-y-4">
-            <div className="flex items-center gap-3">
-              <Mail className="w-5 h-5 text-primary" />
-              <Link
-                href="mailto:rahulmamoria@gmail.com"
-                className="text-muted-foreground hover:text-primary transition-colors"
-              >
-                rahulmamoria@gmail.com
-              </Link>
+        <div className="bg-card/50 backdrop-blur-sm rounded-lg p-8 border border-border">
+          <div className="space-y-8">
+            {/* Profile Section */}
+            <div className="text-center space-y-4">
+              <h3 className="text-2xl font-bold text-foreground">Let's Connect</h3>
+              <p className="text-muted-foreground">
+                Feel free to reach out for collaborations or just a friendly hello
+              </p>
             </div>
-            
-            <div className="flex items-center gap-3">
-              <Phone className="w-5 h-5 text-primary" />
-              <Link
-                href="tel:+919876543210"
-                className="text-muted-foreground hover:text-primary transition-colors"
-              >
-                +91 98765 43210
-              </Link>
+
+            {/* Contact Details */}
+            <div className="space-y-6">
+              <div className="flex items-center gap-4">
+                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                  <Mail className="h-6 w-6" />
+                </div>
+                <div>
+                  <h4 className="text-sm font-medium text-muted-foreground">Write me email at</h4>
+                  <Link
+                    href="mailto:rahulmamoria@gmail.com"
+                    className="text-base font-medium text-foreground hover:text-primary transition-colors"
+                  >
+                    rahulmamoria@gmail.com
+                  </Link>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-4">
+                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                  <MapPin className="h-6 w-6" />
+                </div>
+                <div>
+                  <h4 className="text-sm font-medium text-muted-foreground">Location</h4>
+                  <span className="text-base font-medium text-foreground">
+                    Hyderabad, India
+                  </span>
+                </div>
+              </div>
             </div>
-            
-            <div className="flex items-center gap-3">
-              <MapPin className="w-5 h-5 text-primary" />
-              <span className="text-muted-foreground">
-                Hyderabad, India
-              </span>
+
+            {/* Social Links */}
+            <div className="pt-4">
+              <p className="text-sm text-muted-foreground mb-4">Follow me on</p>
+              <div className="flex gap-4">
+                <TooltipProvider>
+                  {socialLinks.map((link) => (
+                    <Tooltip key={link.label}>
+                      <TooltipTrigger asChild>
+                        <Link
+                          href={link.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="p-2 bg-background/50 rounded-lg border border-border hover:border-primary/50 hover:text-primary transition-colors"
+                        >
+                          <link.icon className="w-5 h-5" />
+                        </Link>
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        <p>{link.label}</p>
+                      </TooltipContent>
+                    </Tooltip>
+                  ))}
+                </TooltipProvider>
+              </div>
             </div>
           </div>
         </div>
@@ -134,21 +165,6 @@ export function Contact() {
               />
             </div>
 
-            <div>
-              <label htmlFor="phone" className="block text-sm font-medium mb-1">
-                Phone Number
-              </label>
-              <input
-                type="tel"
-                id="phone"
-                name="phone"
-                value={formData.phone}
-                onChange={handleChange}
-                required
-                className="w-full px-3 py-2 bg-background/50 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary/50"
-                placeholder="Your phone number"
-              />
-            </div>
             
             <div>
               <label htmlFor="message" className="block text-sm font-medium mb-1">

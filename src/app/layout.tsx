@@ -1,16 +1,16 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { Background } from "@/components/Background";
-import { Sidebar } from "@/components/Sidebar";
-import { TopNav } from "@/components/TopNav";
-import { ThemeProvider } from "../components/theme-provider";
-
 import "./globals.css";
+import { ThemeProvider } from "@/components/theme-provider";
+import { Sidebar } from "@/components/Sidebar";
+import { Background } from "@/components/Background";
+import { TopNav } from "@/components/TopNav";
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Rahul Mamoria",
-  description: "Full Stack Developer Portfolio",
+  description: "Full Stack Developer",
   icons: {
     icon: [
       {
@@ -35,7 +35,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth dark" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="icon" href="/favicon-16x16.png" sizes="16x16" type="image/png" />
@@ -43,7 +43,7 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" type="image/png" />
         <link rel="manifest" href="/site.webmanifest" />
       </head>
-      <body className={`${inter.className} bg-background text-foreground`}>
+      <body className={inter.className}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -52,8 +52,9 @@ export default function RootLayout({
         >
           <Background />
           <div className="flex h-screen">
-            <Sidebar />
-            
+            <div className="w-[350px]">
+              <Sidebar />
+            </div>
             <div className="flex-1 h-screen overflow-y-auto">
               <TopNav />
               <div className="container mx-auto px-8 py-12">
