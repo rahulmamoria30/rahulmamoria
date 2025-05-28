@@ -2,67 +2,123 @@
 
 import { Briefcase } from "lucide-react";
 import { SectionTitle } from "@/components/ui/section-title";
-
-interface ExperienceItem {
-  title: string;
-  company: string;
-  period: string;
-  description: string[];
-}
-
-const experiences: ExperienceItem[] = [
-  {
-    title: "Software Engineer",
-    company: "Company Name",
-    period: "2022 - Present",
-    description: [
-      "Developed and maintained full-stack applications using React, Node.js, and TypeScript",
-      "Implemented responsive designs and optimized application performance",
-      "Collaborated with cross-functional teams to deliver high-quality solutions"
-    ]
-  },
-  {
-    title: "Junior Developer",
-    company: "Previous Company",
-    period: "2020 - 2022",
-    description: [
-      "Built and maintained web applications using modern JavaScript frameworks",
-      "Participated in code reviews and implemented best practices",
-      "Worked on both frontend and backend development tasks"
-    ]
-  }
-];
+import { Progress } from "@/components/ui/progress";
+import { Card, CardContent } from "@/components/ui/card";
+import Image from "next/image";
+import { sectionConfig, skillCategories, experiences, ExperienceItem } from "@/constants/experience";
+import { MotionDiv } from "@/components/ui/motion-div";
 
 export function Experience() {
   return (
-    <div className="flex flex-col items-start flex-grow w-full">
-      <div className="w-full">
-        <div className="space-y-6">
-          <SectionTitle icon={Briefcase} title="Experience" />
-          
-          <div className="space-y-6">
-            {experiences.map((exp, index) => (
-              <div
-                key={index}
-                className="bg-card/50 backdrop-blur-sm rounded-lg p-6 border border-border"
-              >
-                <div className="flex justify-between items-start mb-2">
-                  <div>
-                    <h3 className="text-lg font-semibold">{exp.title}</h3>
-                    <p className="text-muted-foreground">{exp.company}</p>
-                  </div>
-                  <span className="text-sm text-muted-foreground">{exp.period}</span>
+    <MotionDiv
+      variant="container"
+      id={sectionConfig.id}
+      className={sectionConfig.className}
+    >
+      <MotionDiv variant="item">
+        <SectionTitle icon={sectionConfig.title.icon} title={sectionConfig.title.text} />
+      </MotionDiv>
+      <MotionDiv 
+        variant="container"
+        className="flex flex-col gap-8 flex-wrap"
+      >
+        {experiences.map((exp: ExperienceItem, index: number) => (
+          <MotionDiv
+            key={index}
+            variant="card"
+            whileHover="hover"
+            className="group relative bg-card/50 backdrop-blur-sm rounded-lg p-6 border border-border hover:border-primary/50 transition-all duration-300"
+          >
+            <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-primary/10 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <div className="relative">
+              <div className="flex justify-between items-start mb-4">
+                <h3 className="text-2xl font-semibold bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">
+                  {exp.title}
+                </h3>
+                <div className="flex gap-2">
+                  <span className="px-3 py-1 text-sm rounded-full bg-primary/10 text-primary hover:bg-primary/20 transition-colors duration-300">
+                    {exp.period}
+                  </span>
+                  <span className="px-3 py-1 text-sm rounded-full bg-primary/10 text-primary hover:bg-primary/20 transition-colors duration-300">
+                    {exp.type}
+                  </span>
                 </div>
-                <ul className="list-disc list-inside space-y-1 mt-4 text-muted-foreground">
-                  {exp.description.map((item, i) => (
-                    <li key={i}>{item}</li>
-                  ))}
-                </ul>
               </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </div>
+              <div className="flex items-center gap-3 mb-4">
+                <div className="relative w-10 h-10 rounded-full bg-card/80 border border-border overflow-hidden group-hover:border-primary/50 transition-colors duration-300">
+                  <Image
+                    src={exp.logo}
+                    alt={`${exp.company} logo`}
+                    fill
+                    className="object-contain p-1.5 group-hover:scale-110 transition-transform duration-300"
+                  />
+                </div>
+                <h4 className="text-lg font-medium">{exp.company}</h4>
+              </div>
+              <ul className="list-none space-y-3 text-muted-foreground">
+                {exp.description.map((item: string, i: number) => (
+                  <MotionDiv
+                    key={i}
+                    variant="fade"
+                    transition={{ delay: 0.1 * i }}
+                    className="flex items-start gap-2"
+                  >
+                    <span className="text-primary mt-1.5">•</span>
+                    <span>{item}</span>
+                  </MotionDiv>
+                ))}
+              </ul>
+            </div>
+          </MotionDiv>
+        ))}
+      </MotionDiv>
+      <MotionDiv 
+        variant="container"
+        className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8"
+      >
+        {skillCategories.map((category, index) => (
+          <MotionDiv
+            key={category.title}
+            variant="card"
+            whileHover="hover"
+          >
+            <Card className="bg-card/50 backdrop-blur-sm hover:border-primary/50 transition-all duration-300 h-full">
+              <CardContent className="p-6 flex flex-col h-full">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="p-2 rounded-lg bg-primary/10 text-primary">
+                    <category.icon className="w-6 h-6" />
+                  </div>
+                  <h3 className="text-lg font-semibold bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">
+                    {category.title}
+                  </h3>
+                </div>
+                <div className="space-y-4 flex-grow">
+                  {category.skills.map((skill, skillIndex) => (
+                    <MotionDiv
+                      key={skill.name}
+                      variant="fade"
+                      transition={{ delay: 0.1 * skillIndex }}
+                      className="space-y-2"
+                    >
+                      <div className="flex justify-between items-center">
+                        <span className="text-sm font-medium">{skill.name}</span>
+                        <span className="text-sm text-muted-foreground">{skill.level}%</span>
+                      </div>
+                      <div className="relative h-0.5 bg-primary/10 rounded-full overflow-hidden">
+                        <Progress 
+                          value={skill.level} 
+                          max={100}
+                          className="h-full bg-primary/10"
+                        />
+                      </div>
+                    </MotionDiv>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          </MotionDiv>
+        ))}
+      </MotionDiv>
+    </MotionDiv>
   );
 } 
