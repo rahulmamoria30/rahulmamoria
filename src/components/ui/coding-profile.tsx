@@ -22,7 +22,7 @@ export function CodingProfile({ url, title, imagePath, className }: CodingProfil
         alt={title}
         height={24}
         width={24}
-        className="mr-2"
+        className="mr-2 bg-transparent"
       />
       <span>{title}</span>
     </Link>

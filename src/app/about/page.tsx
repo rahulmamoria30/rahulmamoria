@@ -36,13 +36,13 @@ export default function About() {
           <SectionTitle icon={User} title="About Me" />
         </MotionDiv>
 
-        <div className="flex gap-12">
+        <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
           {/* Left Column - Image and Basic Info */}
           <MotionDiv 
             variant="item"
-            className="flex flex-col items-center lg:items-start space-y-3"
+            className="flex flex-col items-center lg:w-1/3"
           >
-            <div className="w-72 h-72 relative rounded-2xl overflow-hidden border border-border">
+            <div className="w-64 h-64 sm:w-72 sm:h-72 relative rounded-2xl overflow-hidden border border-border">
               <Image
                 height={400}
                 width={400}
@@ -56,15 +56,20 @@ export default function About() {
           {/* Right Column - About Content */}
           <MotionDiv 
             variant="item"
-            className="space-y-6"
+            className="lg:w-2/3"
           >
-            <div className="prose prose-neutral dark:prose-invert">
+            <div className="prose prose-neutral dark:prose-invert max-w-none">
               <h3 className="text-xl font-semibold mb-4">{aboutContent.journey.title}</h3>
-              {aboutContent.journey.paragraphs.map((paragraph, index) => (
-                <p key={index} className="text-muted-foreground leading-relaxed mt-4 first:mt-0">
-                  {paragraph}
-                </p>
-              ))}
+              <div className="space-y-4">
+                {aboutContent.journey.paragraphs.map((paragraph, index) => (
+                  <p 
+                    key={index} 
+                    className="text-muted-foreground leading-relaxed break-words"
+                  >
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
             </div>
           </MotionDiv>
         </div>
@@ -150,7 +155,7 @@ export default function About() {
               <div className="flex justify-start">
                 <button
                   onClick={() => setShowAllImages(!showAllImages)}
-                  className="bg-background/80 backdrop-blur-sm  rounded-lg px-6 py-2 text-sm text-muted-foreground hover:text-foreground hover:border-primary/50 transition-colors cursor-pointer"
+                  className="bg-transparent rounded-lg px-6 py-2 text-sm text-muted-foreground hover:text-foreground hover:border-primary/50 transition-colors cursor-pointer"
                 >
                   {showAllImages ? "Show Less" : "Show More"}
                 </button>

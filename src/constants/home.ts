@@ -46,7 +46,7 @@ export const profileData = [
     url: "https://www.geeksforgeeks.org/user/rahulmamoria/",
     title: "GeeksforGeeks",
     imagePath:
-      "https://upload.wikimedia.org/wikipedia/commons/4/43/GeeksforGeeks.svg",
+      "/images/coding-profiles/gfg.png",
   },
   {
     url: "https://www.codechef.com/users/rahulrm_903",

@@ -4,21 +4,21 @@ export const education = [
     field: "Civil Engineering",
     school: "National Institute of Technology Calicut",
     year: "2019 - 2023",
-    details: "Specialized in Software Development and Data Structures. Active member of ACM Student Chapter and participated in various hackathons."
+    details: "CGPA: 7.5/10. While pursuing Civil Engineering, I developed a strong passion for software development. Self-taught programming and actively participated in coding competitions and hackathons."
   },
   {
     degree: "High School (12th)",
-    field: "Science (PCM)",
+    field: "Physics, Chemistry, Mathematics (PCM)",
     school: "RBSE Board",
-    year: "2017 - 2019",
-    details: "Scored 92% in board examinations. Participated in Science Olympiads and Mathematics competitions."
+    year: "2016 - 2018",
+    details: "Scored 83.60% in board examinations. Studied Physics, Chemistry, and Mathematics with focus on problem-solving and analytical skills."
   },
   {
     degree: "Secondary School (10th)",
-    field: "General",
+    field: "General Course Work",
     school: "RBSE Board",
-    year: "2015 - 2017",
-    details: "Scored 95% in board examinations. Active participant in school science exhibitions and cultural events."
+    year: "2011 - 2016",
+    details: "Scored 90.60% in board examinations. Completed comprehensive studies in Science, Mathematics, and core subjects with good academic performance."
   }
 ];
 
@@ -66,13 +66,14 @@ export const galleryImages = [
 
 export const aboutContent = {
   name: "Rahul Mamoria",
-  role: "Full Stack Developer",
+  role: "Software Engineer",
   location: "Hyderabad, India",
   journey: {
     title: "My Journey",
     paragraphs: [
-      "I'm a passionate Full Stack Developer with a keen interest in building modern web applications. My journey in software development started with a curiosity about how things work on the internet, which led me to explore various technologies and frameworks.",
-      "I specialize in React, Next.js, and TypeScript for frontend development, while also being proficient in Node.js and Python for backend solutions. My approach combines technical expertise with a strong focus on user experience and performance."
+      "Born and raised in Jaipur, Rajasthan, I completed my schooling there before pursuing my passion for technology at the National Institute of Technology Calicut. My journey in software development began with a curiosity about how digital systems work.",
+      "After graduating from NIT Calicut, I joined Grid Dynamics as a Software Engineer, where I work on building scalable web applications using React, Next.js, and TypeScript. I also have experience with Node.js and Java for backend development.",
+      "I focus on writing clean, maintainable code while staying up-to-date with the latest industry trends and best practices."
     ]
   }
 }; 
