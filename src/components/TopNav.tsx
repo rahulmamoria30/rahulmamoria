@@ -61,8 +61,9 @@ export function TopNav() {
   };
 
   return (
-    <nav className="fixed top-6 right-8 z-50">
-      <div className="flex items-center gap-2 bg-background/80 backdrop-blur-sm border border-border rounded-full px-4 py-2">
+    <nav className="fixed top-4 left-0 right-0 z-40 flex justify-center px-2 sm:px-8 pointer-events-none">
+      {/* Desktop Nav */}
+      <div className="hidden sm:flex items-center gap-2 bg-background/80 backdrop-blur-sm border border-border rounded-full px-4 py-2 pointer-events-auto">
         {navItems.map((item) => (
           <Link
             key={item.href}
@@ -79,6 +80,24 @@ export function TopNav() {
           </Link>
         ))}
         <div className="h-4 w-px bg-border mx-2" />
+        <ThemeToggle />
+      </div>
+      {/* Mobile Nav: icons only, centered */}
+      <div className="sm:hidden flex items-center gap-4 bg-background/80 backdrop-blur-sm border border-border rounded-full px-3 py-2 pointer-events-auto">
+        {navItems.map((item) => (
+          <Link
+            key={item.href}
+            href={item.href}
+            onClick={(e) => handleClick(e, item.href)}
+            className={cn(
+              "flex items-center justify-center p-2 rounded-full transition-all duration-200",
+              "hover:bg-accent hover:text-accent-foreground",
+              (activeHash === item.href || activeHash === item.href.replace("/", "")) && "bg-accent text-accent-foreground"
+            )}
+          >
+            <item.icon className="h-5 w-5" />
+          </Link>
+        ))}
         <ThemeToggle />
       </div>
     </nav>

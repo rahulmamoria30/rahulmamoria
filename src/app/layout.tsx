@@ -6,6 +6,7 @@ import { Sidebar } from "@/components/Sidebar";
 import { Background } from "@/components/Background";
 import { TopNav } from "@/components/TopNav";
 import { Footer } from "@/components/Footer";
+import { MobileNavBar } from "@/components/MobileNavBar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -52,13 +53,14 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Background />
+          <div className="md:hidden"><MobileNavBar /></div>
           <div className="flex h-screen">
             <div className="flex-none">
               <Sidebar />
             </div>
             <div className="flex-1 h-screen overflow-y-auto">
-              <TopNav />
-              <div className="w-full px-8 py-12">
+              <div className="hidden md:block"><TopNav /></div>
+              <div className="w-full px-2 sm:px-8 py-8 sm:py-12">
                 {children}
               </div>
               <Footer/>
