@@ -129,31 +129,6 @@ export function MobileNavBar() {
           <ThemeToggle />
         </div>
       </div>
-      {/* Bottom bar: sidebar links and socials as icons */}
-      <div className="fixed bottom-0 left-0 right-0 z-40 flex justify-around items-center bg-background/90 border-t border-border py-2 backdrop-blur-sm">
-        {externalLinks.map((link, idx) => (
-          <Link
-            key={idx}
-            href={link.url}
-            className={`flex flex-col items-center text-muted-foreground hover:text-primary transition-colors ${pathname === link.url ? "text-primary" : ""}`}
-            target={link.url.startsWith('http') ? '_blank' : undefined}
-            rel={link.url.startsWith('http') ? 'noopener noreferrer' : undefined}
-          >
-            <link.icon className="h-6 w-6" />
-          </Link>
-        ))}
-        {socialLinks.map((link, idx) => (
-          <Link
-            key={link.label}
-            href={link.href}
-            className="flex flex-col items-center text-muted-foreground hover:text-primary transition-colors"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <link.icon className="h-6 w-6" />
-          </Link>
-        ))}
-      </div>
     </div>
   );
 } 
