@@ -3,7 +3,7 @@
 import { User, GraduationCap, Heart, Image as ImageIcon, ArrowLeft } from "lucide-react";
 import { SectionTitle } from "@/components/ui/section-title";
 import { MotionDiv } from "@/components/ui/motion-div";
-import Link from "next/link";
+import { AppLink } from "@/components/ui/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { education, hobbies, galleryImages, aboutContent } from "@/constants/about";
@@ -23,13 +23,13 @@ export default function About() {
       >
         {/* Back Navigation */}
         <div className="mb-8">
-          <Link
+          <AppLink
             href="/#home"
             className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
           >
             <ArrowLeft className="h-4 w-4" />
             Back to Home
-          </Link>
+          </AppLink>
         </div>
 
         <MotionDiv variant="item">

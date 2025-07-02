@@ -4,7 +4,7 @@ import { Home, Briefcase, FolderGit2, Mail } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { useEffect, useState } from "react";
-import Link from "next/link";
+import { AppLink } from "@/components/ui/link";
 import { ThemeToggle } from "./theme-toggle";
 
 const navItems = [
@@ -65,7 +65,7 @@ export function TopNav() {
       {/* Desktop Nav */}
       <div className="hidden sm:flex items-center gap-2 bg-background/80 backdrop-blur-sm border border-border rounded-full px-4 py-2 pointer-events-auto">
         {navItems.map((item) => (
-          <Link
+          <AppLink
             key={item.href}
             href={item.href}
             onClick={(e) => handleClick(e, item.href)}
@@ -77,7 +77,7 @@ export function TopNav() {
           >
             <item.icon className="h-4 w-4" />
             <span>{item.label}</span>
-          </Link>
+          </AppLink>
         ))}
         <div className="h-4 w-px bg-border mx-2" />
         <ThemeToggle />
@@ -85,7 +85,7 @@ export function TopNav() {
       {/* Mobile Nav: icons only, centered */}
       <div className="sm:hidden flex items-center gap-4 bg-background/80 backdrop-blur-sm border border-border rounded-full px-3 py-2 pointer-events-auto">
         {navItems.map((item) => (
-          <Link
+          <AppLink
             key={item.href}
             href={item.href}
             onClick={(e) => handleClick(e, item.href)}
@@ -96,7 +96,7 @@ export function TopNav() {
             )}
           >
             <item.icon className="h-5 w-5" />
-          </Link>
+          </AppLink>
         ))}
         <ThemeToggle />
       </div>

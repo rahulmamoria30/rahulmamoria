@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { AppLink } from "@/components/ui/link";
 import Image from "next/image";
 
 interface CodingProfileProps {
@@ -10,7 +10,7 @@ interface CodingProfileProps {
 
 export function CodingProfile({ url, title, imagePath, className }: CodingProfileProps) {
   return (
-    <Link
+    <AppLink
       href={url}
       target="_blank"
       rel="noopener noreferrer"
@@ -25,6 +25,6 @@ export function CodingProfile({ url, title, imagePath, className }: CodingProfil
         className="mr-2 bg-transparent"
       />
       <span>{title}</span>
-    </Link>
+    </AppLink>
   );
 } 

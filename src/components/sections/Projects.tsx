@@ -3,7 +3,7 @@
 import { FolderGit2, Github } from "lucide-react";
 import { SectionTitle } from "@/components/ui/section-title";
 import { PROJECT_DATA } from "@/data/projects";
-import Link from "next/link";
+import { AppLink } from "@/components/ui/link";
 import { AnimatePresence } from "framer-motion";
 import { MotionDiv } from "@/components/ui/motion-div";
 
@@ -108,7 +108,7 @@ export function Projects() {
                 variant="fade"
                 className="flex gap-4"
               >
-                <Link
+                <AppLink
                   href={project.github_link}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -116,14 +116,14 @@ export function Projects() {
                 >
                   <Github className="w-5 h-5" />
                   <span>Code</span>
-                </Link>
-                <Link
+                </AppLink>
+                <AppLink
                   href={`/projects/${project.slug}`}
                   className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
                 >
                   <project.icon className="w-5 h-5" />
                   <span>Description</span>
-                </Link>
+                </AppLink>
               </MotionDiv>
             </div>
           </MotionDiv>

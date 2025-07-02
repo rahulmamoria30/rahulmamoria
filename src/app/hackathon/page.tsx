@@ -5,7 +5,7 @@ import Image from "next/image";
 import { FaLinkedin } from "react-icons/fa";
 import { Trophy, ArrowLeft, Image as ImageIcon, Share2, Code2, ExternalLink } from "lucide-react";
 import { SectionTitle } from "@/components/ui/section-title";
-import Link from "next/link";
+import { AppLink } from "@/components/ui/link";
 import { hackathonImages, linkedinPosts, recruitmentSteps } from "@/constants/hackathon";
 
 export default function HackathonPage() {
@@ -19,13 +19,13 @@ export default function HackathonPage() {
       >
         {/* Back Navigation */}
         <div className="mb-8">
-          <Link
+          <AppLink
             href="/#home"
             className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
           >
             <ArrowLeft className="h-4 w-4" />
             Back to Home
-          </Link>
+          </AppLink>
         </div>
 
         <SectionTitle icon={Trophy} title="Hackathon Diaries" />
@@ -129,7 +129,7 @@ export default function HackathonPage() {
                     <span className="text-muted-foreground">{post.date}</span>
                   </div>
                   <p className="text-muted-foreground text-lg mb-4 leading-relaxed">{post.content}</p>
-                  <Link
+                  <AppLink
                     href={post.link}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -137,7 +137,7 @@ export default function HackathonPage() {
                   >
                     View on LinkedIn
                     <ExternalLink className="w-4 h-4" />
-                  </Link>
+                  </AppLink>
                 </div>
               </motion.div>
             ))}

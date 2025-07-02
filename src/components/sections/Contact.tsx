@@ -4,8 +4,8 @@ import {  Mail, MapPin, Send, X } from "lucide-react";
 import { SectionTitle } from "@/components/ui/section-title";
 import { useState } from "react";
 import { sendContactForm, type ContactFormData } from "@/api/contact";
-import { socialLinks } from "@/constants/sidebar";
-import Link from "next/link";
+import { socailLinksWithInstagram } from "@/constants/sidebar";
+import { AppLink } from "@/components/ui/link";
 import { FormItem } from "@/components/ui/form-item";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -64,6 +64,7 @@ export function Contact() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  
   return (
     <div id="contact" className="pb-24 space-y-6 scroll-mt-24">
       <SectionTitle icon={Mail} title="Contact" />
@@ -87,12 +88,12 @@ export function Contact() {
                 </div>
                 <div>
                   <h4 className="text-sm font-medium text-muted-foreground">Write me an email at</h4>
-                  <Link
+                  <AppLink
                     href="mailto:rahulmamoria@gmail.com"
                     className="text-base font-medium text-foreground hover:text-primary transition-colors"
                   >
                     rahulmamoria07@gmail.com
-                  </Link>
+                  </AppLink>
                 </div>
               </div>
 
@@ -114,17 +115,17 @@ export function Contact() {
               <p className="text-sm text-muted-foreground mb-4">Follow me on</p>
               <div className="flex gap-4">
                 <TooltipProvider>
-                  {socialLinks.map((link) => (
+                  {socailLinksWithInstagram.map((link) => (
                     <Tooltip key={link.label}>
                       <TooltipTrigger asChild>
-                        <Link
+                        <AppLink
                           href={link.href}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="p-2 bg-background/50 rounded-lg border border-border hover:border-primary/50 hover:text-primary transition-colors"
                         >
                           <link.icon className="w-5 h-5" />
-                        </Link>
+                        </AppLink>
                       </TooltipTrigger>
                       <TooltipContent>
                         <p>{link.label}</p>

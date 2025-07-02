@@ -10,70 +10,13 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import Link from "next/link";
+import { AppLink } from "@/components/ui/link";
 import { usePathname } from "next/navigation";
 import { socialLinks, externalLinks, profileData } from "@/constants/sidebar";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu } from "lucide-react";
 
 export function Sidebar() {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const pathname = usePathname();
-
-  // Mobile sidebar content (same as desktop, but vertical and icon-only for links)
-  const mobileSidebarContent = (
-    <div className="flex flex-col items-center p-6 h-full">
-      <div className="flex flex-col items-center gap-4 mb-6">
-        <Image
-          src={profileData.image}
-          alt={profileData.name}
-          width={64}
-          height={64}
-          className="rounded-full border-2 border-primary/20"
-          onError={(e) => {
-            const target = e.target as HTMLImageElement;
-            target.src = "/placeholder.jpg";
-          }}
-        />
-        <div className="text-center">
-          <h1 className="text-lg font-bold text-foreground">{profileData.name}</h1>
-          <p className="text-xs text-muted-foreground">{profileData.role}</p>
-          <div className="flex items-center justify-center gap-1 mt-2 text-xs text-muted-foreground">
-            <profileData.locationIcon className="w-4 h-4" />
-            <span>{profileData.location}</span>
-          </div>
-        </div>
-      </div>
-      <Separator className="my-4" />
-      <div className="flex flex-col gap-4 w-full mb-6">
-        {externalLinks.map((link, idx) => (
-          <Link
-            key={idx}
-            href={link.url}
-            className={`flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors ${pathname === link.url ? "text-primary" : ""}`}
-            target={link.url.startsWith('http') ? '_blank' : undefined}
-            rel={link.url.startsWith('http') ? 'noopener noreferrer' : undefined}
-          >
-            <link.icon className="h-5 w-5" />
-            <span className="text-sm">{link.title}</span>
-          </Link>
-        ))}
-      </div>
-      <div className="flex gap-4 mt-auto">
-        {socialLinks.map((link) => (
-          <Link
-            key={link.label}
-            href={link.href}
-            className="text-muted-foreground hover:text-primary transition-colors"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <link.icon className="h-5 w-5" />
-          </Link>
-        ))}
-      </div>
-    </div>
-  );
 
   return (
     <>
@@ -130,7 +73,7 @@ export function Sidebar() {
                   <Tooltip>
                     <TooltipTrigger asChild>
                       {link.url.startsWith('/') ? (
-                        <Link
+                        <AppLink
                           href={link.url}
                           className={`flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors ${
                             pathname === link.url ? "text-primary" : ""
@@ -138,9 +81,9 @@ export function Sidebar() {
                         >
                           <link.icon className='h-5 w-5' />
                           {!isCollapsed && <p className="text-md font-medium">{link.title}</p>}
-                        </Link>
+                        </AppLink>
                       ) : (
-                        <Link
+                        <AppLink
                           href={link.url}
                           target="_blank"
                           rel="noopener noreferrer"
@@ -148,7 +91,7 @@ export function Sidebar() {
                         >
                           <link.icon className='h-5 w-5' />
                           {!isCollapsed && <p className="text-md font-medium">{link.title}</p>}
-                        </Link>
+                        </AppLink>
                       )}
                     </TooltipTrigger>
                     {isCollapsed && (
@@ -167,14 +110,14 @@ export function Sidebar() {
               {socialLinks.map((link) => (
                 <Tooltip key={link.label}>
                   <TooltipTrigger asChild>
-                    <Link
+                    <AppLink
                       href={link.href}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-muted-foreground hover:text-primary transition-colors"
                     >
                       <link.icon className='h-5 w-5' />
-                    </Link>
+                    </AppLink>
                   </TooltipTrigger>
                   <TooltipContent side={isCollapsed ? "right" : "top"}>
                     <p>{link.label}</p>
@@ -184,22 +127,6 @@ export function Sidebar() {
             </TooltipProvider>
           </div>
         </div>
-      </div>
-      {/* Mobile Sidebar Trigger Button */}
-      <div className="md:hidden">
-        <Sheet>
-          <SheetTrigger asChild>
-            <button
-              className="fixed top-4 left-4 z-50 flex items-center justify-center rounded-full border border-border bg-background p-3 shadow-lg hover:bg-accent transition-colors"
-              aria-label="Open sidebar"
-            >
-              <Menu className="h-7 w-7" />
-            </button>
-          </SheetTrigger>
-          <SheetContent side="left" className="p-0 max-w-xs w-64">
-            {mobileSidebarContent}
-          </SheetContent>
-        </Sheet>
       </div>
     </>
   );

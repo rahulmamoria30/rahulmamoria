@@ -4,41 +4,41 @@ import {
   TwitterLogoIcon,
   StarIcon,
   Pencil1Icon,
-  GlobeIcon,
   InstagramLogoIcon,
   PersonIcon,
 } from "@radix-ui/react-icons";
+import { MapPinIcon } from "lucide-react";
 
 export const profileData = {
   name: "Rahul Mamoria",
-  role: "Full Stack Developer",
+  role: "Software Developer",
   location: "Hyderabad, India",
-  locationIcon: GlobeIcon,
+  locationIcon: MapPinIcon,
   image: "/profile.jpeg",
 };
 
 export const socialLinks = [
   {
     label: "GitHub",
-    href: "https://github.com/rahulmamoria",
+    href: "https://github.com/rahulmamoria30",
     icon: GitHubLogoIcon,
   },
   {
     label: "LinkedIn",
-    href: "https://linkedin.com/in/rahulmamoria",
+    href: "https://linkedin.com/in/rahulmm07",
     icon: LinkedInLogoIcon,
   },
   {
     label: "Twitter",
-    href: "https://twitter.com/rahulmamoria",
+    href: "https://twitter.com/rahul_rm__",
     icon: TwitterLogoIcon,
   },
-  {
-    label: "Instagram",
-    href: "https://instagram.com/rahulmamoria",
-    icon: InstagramLogoIcon,
-  },
 ];
+export const socailLinksWithInstagram = [...socialLinks, {
+  label: "Instagram",
+  href: "https://instagram.com/rahulmamoria",
+  icon: InstagramLogoIcon,
+}];
 
 export const externalLinks = [
   {

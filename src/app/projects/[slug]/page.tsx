@@ -4,7 +4,7 @@ import { useParams } from "next/navigation";
 import { PROJECT_DATA } from "@/data/projects";
 import ReactMarkdown from "react-markdown";
 import { ArrowLeft } from "lucide-react";
-import Link from "next/link";
+import { AppLink } from "@/components/ui/link";
 import { ComponentPropsWithoutRef } from "react";
 import Image from "next/image";
 import { TooltipProvider, Tooltip, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip";
@@ -19,9 +19,9 @@ export default function ProjectPage() {
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-bold mb-4">Project Not Found</h1>
-          <Link href="/" className="text-primary hover:underline">
+          <AppLink href="/" className="text-primary hover:underline">
             Return to Home
-          </Link>
+          </AppLink>
         </div>
       </div>
     );
@@ -49,33 +49,33 @@ export default function ProjectPage() {
         {/* Content Section */}
         <div className="max-w-4xl mx-auto px-4 py-12">
           {/* Back Button */}
-          <Link
+          <AppLink
             href="/#projects"
             className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary mb-8 transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
             Back to Projects
-          </Link>
+          </AppLink>
 
           {/* Project Links */}
           <div className="flex gap-4 mb-8">
-            <Link
+            <AppLink
               href={project.github_link}
               target="_blank"
               rel="noopener noreferrer"
               className="px-4 py-2 bg-primary/10 text-primary rounded-lg hover:bg-primary/20 transition-colors"
             >
               View Code
-            </Link>
+            </AppLink>
             {project.project_link ? (
-              <Link
+              <AppLink
                 href={project.project_link}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors"
               >
                 Live Demo
-              </Link>
+              </AppLink>
             ) : (
               <Tooltip delayDuration={300}>
                 <TooltipTrigger asChild>

@@ -1,5 +1,6 @@
-import Link from "next/link";
-import { GitHubLogoIcon, LinkedInLogoIcon, TwitterLogoIcon } from "@radix-ui/react-icons";
+"use client";
+import { AppLink } from "@/components/ui/link";
+import { socialLinks } from "@/constants/sidebar";
 
 export function Footer() {
   return (
@@ -7,33 +8,21 @@ export function Footer() {
       <div className="container mx-auto px-8 py-6">
         <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
           <div className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Rahul Mamoria. All rights reserved.
+            © 2024 Rahul Mamoria. All rights reserved.
           </div>
           <div className="flex items-center gap-4">
-            <Link
-              href="https://github.com/rahulmamoria"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-foreground transition-colors"
-            >
-              <GitHubLogoIcon className="w-5 h-5" />
-            </Link>
-            <Link
-              href="https://linkedin.com/in/rahulmamoria"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-foreground transition-colors"
-            >
-              <LinkedInLogoIcon className="w-5 h-5" />
-            </Link>
-            <Link
-              href="https://twitter.com/rahulmamoria"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-foreground transition-colors"
-            >
-              <TwitterLogoIcon className="w-5 h-5" />
-            </Link>
+            {socialLinks.map((link) => (
+              <AppLink
+                key={link.href}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted-foreground hover:text-foreground transition-colors"
+                aria-label={link.label}
+              >
+              <link.icon className="h-5 w-5" />
+              </AppLink>
+            ))}
           </div>
         </div>
       </div>
