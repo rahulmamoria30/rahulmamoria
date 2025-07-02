@@ -1,6 +1,6 @@
 "use client";
 
-import { User, GraduationCap, Heart, Image as ImageIcon, ArrowLeft, ChevronDown } from "lucide-react";
+import { User, GraduationCap, Heart, Image as ImageIcon, ArrowLeft } from "lucide-react";
 import { SectionTitle } from "@/components/ui/section-title";
 import { MotionDiv } from "@/components/ui/motion-div";
 import Link from "next/link";

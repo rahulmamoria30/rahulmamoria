@@ -1,9 +1,7 @@
 import { cn } from "@/lib/utils";
 import { HTMLAttributes, forwardRef } from "react";
 
-interface TypographyProps extends HTMLAttributes<HTMLHeadingElement> {}
-
-export const TypographyH1 = forwardRef<HTMLHeadingElement, TypographyProps>(
+export const TypographyH1 = forwardRef<HTMLHeadingElement, HTMLAttributes<HTMLHeadingElement>>(
   ({ className, ...props }, ref) => {
     return (
       <h1
@@ -16,7 +14,7 @@ export const TypographyH1 = forwardRef<HTMLHeadingElement, TypographyProps>(
 );
 TypographyH1.displayName = "TypographyH1";
 
-export const TypographyP = forwardRef<HTMLParagraphElement, TypographyProps>(
+export const TypographyP = forwardRef<HTMLParagraphElement, HTMLAttributes<HTMLParagraphElement>>(
   ({ className, ...props }, ref) => {
     return (
       <p

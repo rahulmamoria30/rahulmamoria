@@ -3,8 +3,6 @@ import {
   LinkedInLogoIcon,
   TwitterLogoIcon,
   StarIcon,
-  ReaderIcon,
-  CodeIcon,
   Pencil1Icon,
   GlobeIcon,
   InstagramLogoIcon,

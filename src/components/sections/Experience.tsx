@@ -1,6 +1,6 @@
 "use client";
 
-import { Briefcase } from "lucide-react";
+
 import { SectionTitle } from "@/components/ui/section-title";
 import { Progress } from "@/components/ui/progress";
 import { Card, CardContent } from "@/components/ui/card";
@@ -76,7 +76,7 @@ export function Experience() {
         variant="container"
         className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8"
       >
-        {skillCategories.map((category, index) => (
+        {skillCategories.map((category) => (
           <MotionDiv
             key={category.title}
             variant="card"

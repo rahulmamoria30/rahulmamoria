@@ -1,6 +1,6 @@
 "use client";
 
-import { Link as NextLink, Mail, MapPin, Instagram, Send, X } from "lucide-react";
+import {  Mail, MapPin, Send, X } from "lucide-react";
 import { SectionTitle } from "@/components/ui/section-title";
 import { useState } from "react";
 import { sendContactForm, type ContactFormData } from "@/api/contact";
@@ -73,7 +73,7 @@ export function Contact() {
           <div className="space-y-8">
             {/* Profile Section */}
             <div className="text-start space-y-4">
-              <h3 className="text-2xl font-bold text-foreground">Let's Connect</h3>
+              <h3 className="text-2xl font-bold text-foreground">Let&apos;s Connect</h3>
               <p className="text-muted-foreground">
                 Feel free to reach out for collaborations or just a friendly hello
               </p>

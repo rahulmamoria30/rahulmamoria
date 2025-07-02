@@ -12,7 +12,6 @@ export function SocialLink({ icon: Icon, href, label }: SocialLinkProps) {
     <Button
       variant="ghost"
       size="icon"
-      asChild
       className="text-muted-foreground hover:text-primary transition-colors"
     >
       <a

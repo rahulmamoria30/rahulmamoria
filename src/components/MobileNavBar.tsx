@@ -9,6 +9,7 @@ import { ThemeToggle } from "@/components/theme-toggle";
 import { Separator } from "@/components/ui/separator";
 import { externalLinks, socialLinks, profileData } from "@/constants/sidebar";
 import { Home, Briefcase, FolderGit2, Mail } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 const navItems = [
   { href: "/#home", icon: Home, label: "Home" },
@@ -19,14 +20,22 @@ const navItems = [
 
 export function MobileNavBar() {
   const pathname = usePathname();
+  const router = useRouter();
   const [activeHash, setActiveHash] = useState(pathname);
+  const [isOpen, setIsOpen] = useState(false);
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     if (href.startsWith("/#")) {
       e.preventDefault();
+      // If we're not on the home page, first navigate to home
+      if (pathname !== "/") {
+        router.push(href);
+        return;
+      }
       const element = document.querySelector(href.replace("/", ""));
       if (element) {
         element.scrollIntoView({ behavior: "smooth" });
+        router.push(href.replace("/", ""));
         setActiveHash(href.replace("/", ""));
       }
     } else {
@@ -67,6 +76,7 @@ export function MobileNavBar() {
             className={`flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors ${pathname === link.url ? "text-primary" : ""}`}
             target={link.url.startsWith('http') ? '_blank' : undefined}
             rel={link.url.startsWith('http') ? 'noopener noreferrer' : undefined}
+            onClick={() => setIsOpen(false)}
           >
             <link.icon className="h-5 w-5" />
             <span className="text-sm">{link.title}</span>
@@ -81,6 +91,7 @@ export function MobileNavBar() {
             className="text-muted-foreground hover:text-primary transition-colors"
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => setIsOpen(false)}
           >
             <link.icon className="h-5 w-5" />
           </Link>
@@ -95,11 +106,12 @@ export function MobileNavBar() {
       <div className="fixed top-4 left-0 right-0 z-50 flex items-center justify-center px-2 pointer-events-none">
         {/* Sidebar trigger */}
         <div className="absolute left-4 pointer-events-auto">
-          <Sheet>
+          <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
               <button
                 className="flex items-center justify-center rounded-full border border-border bg-background p-3 shadow-lg hover:bg-accent transition-colors"
                 aria-label="Open sidebar"
+                onClick={() => setIsOpen(true)}
               >
                 <Menu className="h-7 w-7" />
               </button>

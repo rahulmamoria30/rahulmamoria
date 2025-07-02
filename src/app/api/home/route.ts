@@ -8,7 +8,7 @@ export async function GET() {
       skillCards,
       profileData
     });
-  } catch (error) {
+  } catch {
     return NextResponse.json(
       { error: 'Failed to fetch home data' },
       { status: 500 }
