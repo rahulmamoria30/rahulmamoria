@@ -125,7 +125,7 @@ export function Home() {
             {experienceTimeline.map((step, idx) => (
               <div key={step.label} className="flex flex-col items-center flex-1 min-w-[70px] sm:min-w-[90px] md:min-w-[120px] relative z-10 min-w-0">
                 {/* Gradient Border Circle */}
-                <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-card flex items-center justify-center mb-2 border-2 border-transparent bg-clip-padding group transition-transform duration-200 hover:scale-105 shadow-lg" style={{ borderImage: 'linear-gradient(135deg, var(--primary), var(--secondary)) 1' }}>
+                <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12  bg-card flex items-center justify-center mb-2 border-2 border-transparent bg-clip-padding group transition-transform duration-200 hover:scale-105 shadow-lg" style={{ borderImage: 'linear-gradient(135deg, var(--primary), var(--secondary)) 1' }}>
                   <span className="text-primary font-extrabold text-base sm:text-lg md:text-xl tracking-tight drop-shadow-sm">
                     {step.value}
                   </span>
