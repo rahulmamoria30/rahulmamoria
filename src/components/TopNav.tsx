@@ -4,8 +4,8 @@ import { Home, Briefcase, FolderGit2, Mail } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { useEffect, useState } from "react";
-import { AppLink } from "@/components/ui/link";
 import { ThemeToggle } from "./theme-toggle";
+import { AppLink } from "./ui/link";
 
 const navItems = [
   { href: "/#home", icon: Home, label: "Home" },

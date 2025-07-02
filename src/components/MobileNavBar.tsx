@@ -1,10 +1,9 @@
 "use client";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
-import { Menu } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
 import { ThemeToggle } from "@/components/theme-toggle";
-import { Home, Briefcase, FolderGit2, Mail } from "lucide-react";
+import { Home, Briefcase, FolderGit2, Mail, Menu } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { AppLink } from "@/components/ui/link";
 import { MobileSidebar } from "@/components/MobileSidebar";
