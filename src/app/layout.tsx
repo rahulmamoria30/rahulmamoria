@@ -60,7 +60,7 @@ export default function RootLayout({
             </div>
             <div className="flex-1 h-screen overflow-y-auto">
               <div className="hidden md:block"><TopNav /></div>
-              <div className="w-full px-2 sm:px-8 py-8 sm:py-12">
+              <div className="w-full px-6 sm:px-8 py-8 sm:py-12">
                 {children}
               </div>
               <Footer/>

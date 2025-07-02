@@ -20,42 +20,42 @@ export function Experience() {
       </MotionDiv>
       <MotionDiv 
         variant="container"
-        className="flex flex-col gap-8 flex-wrap"
+        className="flex flex-col gap-3 xs:gap-4 sm:gap-5 md:gap-6 lg:gap-8 xl:gap-10 2xl:gap-12 flex-wrap"
       >
         {experiences.map((exp: ExperienceItem, index: number) => (
           <MotionDiv
             key={index}
             variant="card"
             whileHover="hover"
-            className="group relative bg-card/50 backdrop-blur-sm rounded-lg p-6 border border-border hover:border-primary/50 transition-all duration-300"
+            className="group relative bg-card/50 backdrop-blur-sm rounded-lg p-3 xs:p-4 sm:p-5 md:p-6 lg:p-8 xl:p-10 2xl:p-12 border border-border hover:border-primary/50 transition-all duration-300"
           >
             <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-primary/10 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             <div className="relative">
-              <div className="flex justify-between items-start mb-4">
-                <h3 className="text-2xl font-semibold bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 gap-2 sm:gap-0">
+                <h3 className="text-lg sm:text-2xl font-semibold bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">
                   {exp.title}
                 </h3>
                 <div className="flex gap-2">
-                  <span className="px-3 py-1 text-sm rounded-full bg-primary/10 text-primary hover:bg-primary/20 transition-colors duration-300">
+                  <span className="px-2 sm:px-3 py-1 text-xs sm:text-sm rounded-full bg-primary/10 text-primary hover:bg-primary/20 transition-colors duration-300">
                     {exp.period}
                   </span>
-                  <span className="px-3 py-1 text-sm rounded-full bg-primary/10 text-primary hover:bg-primary/20 transition-colors duration-300">
+                  <span className="px-2 sm:px-3 py-1 text-xs sm:text-sm rounded-full bg-primary/10 text-primary hover:bg-primary/20 transition-colors duration-300">
                     {exp.type}
                   </span>
                 </div>
               </div>
               <div className="flex items-center gap-3 mb-4">
-                <div className="relative w-10 h-10 rounded-full bg-card/80 border border-border overflow-hidden group-hover:border-primary/50 transition-colors duration-300">
+                <div className="relative w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-card/80 border border-border overflow-hidden group-hover:border-primary/50 transition-colors duration-300">
                   <Image
                     src={exp.logo}
                     alt={`${exp.company} logo`}
                     fill
-                    className="object-contain p-1.5 group-hover:scale-110 transition-transform duration-300"
+                    className="object-contain p-1 group-hover:scale-110 transition-transform duration-300"
                   />
                 </div>
-                <h4 className="text-lg font-medium">{exp.company}</h4>
+                <h4 className="text-base sm:text-lg font-medium">{exp.company}</h4>
               </div>
-              <ul className="list-none space-y-3 text-muted-foreground">
+              <ul className="list-none space-y-2 sm:space-y-3 text-muted-foreground">
                 {exp.description.map((item: string, i: number) => (
                   <MotionDiv
                     key={i}
@@ -74,7 +74,7 @@ export function Experience() {
       </MotionDiv>
       <MotionDiv 
         variant="container"
-        className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8"
+        className="grid grid-cols-1 md:grid-cols-2 gap-3 xs:gap-4 sm:gap-5 md:gap-6 lg:gap-8 xl:gap-10 2xl:gap-12 mt-6 sm:mt-8"
       >
         {skillCategories.map((category) => (
           <MotionDiv
@@ -83,16 +83,16 @@ export function Experience() {
             whileHover="hover"
           >
             <Card className="bg-card/50 backdrop-blur-sm hover:border-primary/50 transition-all duration-300 h-full">
-              <CardContent className="p-6 flex flex-col h-full">
+              <CardContent className="p-3 xs:p-4 sm:p-5 md:p-6 lg:p-8 xl:p-10 2xl:p-12 flex flex-col h-full">
                 <div className="flex items-center gap-3 mb-6">
                   <div className="p-2 rounded-lg bg-primary/10 text-primary">
-                    <category.icon className="w-6 h-6" />
+                    <category.icon className="w-5 h-5 sm:w-6 sm:h-6" />
                   </div>
-                  <h3 className="text-lg font-semibold bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">
+                  <h3 className="text-base sm:text-lg font-semibold bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">
                     {category.title}
                   </h3>
                 </div>
-                <div className="space-y-4 flex-grow">
+                <div className="space-y-3 sm:space-y-4 flex-grow">
                   {category.skills.map((skill, skillIndex) => (
                     <MotionDiv
                       key={skill.name}
@@ -101,8 +101,8 @@ export function Experience() {
                       className="space-y-2"
                     >
                       <div className="flex justify-between items-center">
-                        <span className="text-sm font-medium">{skill.name}</span>
-                        <span className="text-sm text-muted-foreground">{skill.level}%</span>
+                        <span className="text-xs sm:text-sm font-medium">{skill.name}</span>
+                        <span className="text-xs sm:text-sm text-muted-foreground">{skill.level}%</span>
                       </div>
                       <div className="relative h-0.5 bg-primary/10 rounded-full overflow-hidden">
                         <Progress 
