@@ -61,7 +61,7 @@ export function TopNav() {
   };
 
   return (
-    <nav className="fixed top-4 left-0 right-0 z-40 flex justify-center px-2 sm:px-8 pointer-events-none">
+    <nav className="fixed top-4 left-0 right-0 z-40 flex justify-center sm:justify-end px-2 sm:px-8 pointer-events-none">
       {/* Desktop Nav */}
       <div className="hidden sm:flex items-center gap-2 bg-background/80 backdrop-blur-sm border border-border rounded-full px-4 py-2 pointer-events-auto">
         {navItems.map((item) => (
