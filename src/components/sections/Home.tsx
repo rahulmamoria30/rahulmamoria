@@ -7,8 +7,17 @@ import {  profileData, introduction } from "@/constants/home";
 import { MotionDiv } from "@/components/ui/motion-div";
 import { Card } from "@/components/ui/card";
 
+// Calculate years of experience from 4 Sept 2023 to today
+function getYearsOfExperience() {
+  const start = new Date(2023, 8, 4); // Months are 0-indexed: 8 = September
+  const now = new Date();
+  const diff = now.getTime() - start.getTime();
+  const years = diff / (1000 * 60 * 60 * 24 * 365.25);
+  return years.toFixed(1); // 1 decimal place
+}
+
 const experienceTimeline = [
-  { value: '2', label: 'Years of Experience' },
+  { value: getYearsOfExperience(), label: 'Years as Software Engineer' },
   { value: '6', label: 'Months SDE Internship' },
   { value: '3', label: 'Months Backend Internship' },
 ];
@@ -86,37 +95,6 @@ export function Home() {
         </MotionDiv>
 
         
-        {/* <MotionDiv variant="item" className="space-y-6">
-          <MotionDiv 
-            variant="slide"
-            className="text-xl sm:text-2xl font-semibold flex items-center gap-3 tracking-wide"
-          >
-            <Cpu className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
-            <span className="bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">
-              What I Do ... ?
-            </span>
-          </MotionDiv>
-          <MotionDiv 
-            variant="container"
-            className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6"
-          >
-            {skillCards.map((card, index) => (
-              <MotionDiv
-                key={index}
-                variant="card"
-                whileHover="hover"
-                className="h-[300px]"
-              >
-                <FlipCard
-                  icon={card.icon}
-                  title={card.title}
-                  description={card.description}
-                />
-              </MotionDiv>
-            ))}
-          </MotionDiv>
-        </MotionDiv> */}
-        
       </div>
       {/* Experience Section: Responsive, Styled Horizontal Card Timeline */}
       <div className="w-full flex flex-col mt-12">
@@ -135,7 +113,7 @@ export function Home() {
                 </span>
                 {/* Line between steps */}
                 {idx !== experienceTimeline.length - 1 && (
-                  <span className="absolute top-1/2 left-full transform -translate-y-1/2 w-6 sm:w-8 md:w-12 h-1 bg-primary/20 rounded-full z-0" />
+                  <span className="absolute top-1/4 left-full transform -translate-y-1/2 w-6 sm:w-8 md:w-12 h-1 bg-primary/20 rounded-full z-0" />
                 )}
               </div>
             ))}
