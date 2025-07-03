@@ -56,7 +56,6 @@ export function MobileNavBar() {
               </button>
             </SheetTrigger>
             <SheetContent side="left" className="p-0 max-w-xs w-64">
-              <SheetTitle>Menu</SheetTitle>
               <MobileSidebar setIsOpen={setIsOpen} pathname={pathname} />
             </SheetContent>
           </Sheet>
