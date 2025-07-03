@@ -36,7 +36,7 @@ export const socialLinks = [
 ];
 export const socailLinksWithInstagram = [...socialLinks, {
   label: "Instagram",
-  href: "https://instagram.com/rahulmamoria",
+  href: "https://instagram.com/rahul_rm__",
   icon: InstagramLogoIcon,
 }];
 
